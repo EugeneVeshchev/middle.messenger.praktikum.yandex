@@ -1,0 +1,22 @@
+{
+  "name": "homer",
+  "version": "0.0.1",
+  "description": "Messenger",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EugeneVeshchev/mf.messenger.praktikum.yandex.git"
+  },
+  "author": "Eugene Veshchev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EugeneVeshchev/mf.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/EugeneVeshchev/mf.messenger.praktikum.yandex#readme",
+  "devDependencies": {
+    "express": "^4.17.1"
+  }
+}
