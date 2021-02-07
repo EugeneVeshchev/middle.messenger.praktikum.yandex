@@ -1,0 +1,35 @@
+.form {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.form__column {
+    display: inline-flex;
+    flex-direction: column;
+}
+.form__column > * {
+    margin: var(--gap-4) 0;
+}
+.form__column > *:first-child {
+    margin-top: 0;
+}
+.form__column > *:last-child {
+    margin-bottom: 0;
+}
+
+.form__column_center {
+    align-items: center;
+}
+
+.form__row {
+    display: inline-flex;
+}
+.form__row > * {
+    margin: var(--gap-4) 0;
+}
+.form__row > *:first-child {
+    margin-left: 0;
+}
+.form__row > *:last-child {
+    margin-right: 0;
+}

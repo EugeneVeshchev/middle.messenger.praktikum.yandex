@@ -1,0 +1,27 @@
+.heading {
+    color: var(--colors-black);
+    font-weight: normal;
+}
+
+.heading_h1 {
+    font-size: var(--typography-h1-font-size);
+}
+.heading_h2 {
+    font-size: var(--typography-h2-font-size);
+}
+.heading_h3 {
+    font-size: var(--typography-h3-font-size);
+}
+.heading_h4 {
+    font-size: var(--typography-h4-font-size);
+}
+.heading_h5 {
+    font-size: var(--typography-h5-font-size);
+}
+.heading_h6 {
+    font-size: var(--typography-h6-font-size);
+}
+
+.heading_center {
+    text-align: center;
+}

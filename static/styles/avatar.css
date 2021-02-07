@@ -1,0 +1,26 @@
+.avatar {
+    font-size: var(--typography-h1-font-size);
+    background-color: var(--colors-blue);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.avatar_large {
+    height: 130px;
+    width: 130px;
+}
+
+.avatar_medium {
+    height: 64px;
+    width: 64px;
+}
+
+.avatar_small {
+    font-size: var(--typography-h2-font-size);
+    height: 40px;
+    width: 40px;
+}
