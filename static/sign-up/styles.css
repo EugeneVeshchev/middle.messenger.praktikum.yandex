@@ -1,10 +1,10 @@
-.sign-in-page {
+.sign-up-page {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.sign-in-page__form {
+.sign-up-page__form {
     min-width: 320px;
     border-radius: var(--gap-4);
     padding: var(--gap-16);
@@ -12,13 +12,13 @@
     box-shadow: var(--card-box-shadow);
 }
 
-.sign-in-page__form > * {
+.sign-up-page__form > * {
     margin: var(--gap-24) 0;
 }
-.sign-in-page__form > *:first-child {
+.sign-up-page__form > *:first-child {
     margin-top: 0;
 }
-.sign-in-page__form > *:last-child {
+.sign-up-page__form > *:last-child {
     margin-bottom: 0;
 }
 
