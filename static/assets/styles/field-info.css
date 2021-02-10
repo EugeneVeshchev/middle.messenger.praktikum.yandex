@@ -1,0 +1,14 @@
+.field-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--typography-h3-font-size);
+    padding: var(--gap-4);
+}
+
+.field-info__name {
+    color: var(--colors-black);
+}
+
+.field-info__value {
+    color: var(--colors-grey-3);
+}

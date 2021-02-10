@@ -1,0 +1,7 @@
+.time-badge {
+    color: var(--colors-grey-2);
+    font-size: var(--typography-description-font-size);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

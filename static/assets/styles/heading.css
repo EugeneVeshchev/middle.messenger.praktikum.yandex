@@ -1,6 +1,7 @@
 .heading {
     color: var(--colors-black);
     font-weight: normal;
+    margin: 0;
 }
 
 .heading_h1 {

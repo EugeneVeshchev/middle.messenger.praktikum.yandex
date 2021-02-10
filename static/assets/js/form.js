@@ -7,6 +7,7 @@ function consoleFormFields(event) {
             fields[key] = value
         })
         console.log(fields);
+        event.target.reset();
     } catch (e) {
         console.error('Can not parse event to FormData', e)
     }

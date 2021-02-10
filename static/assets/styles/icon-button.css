@@ -1,0 +1,29 @@
+.icon-button {
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--colors-black);
+    margin: 0;
+    outline: 0;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.icon-button_primary {
+    background-color: var(--colors-blue);
+    color: var(--colors-white);
+}
+
+.icon-button_secondary {
+    background-color: var(--colors-blue-2);
+    color: var(--colors-white);
+}
+
+.icon-button_disabled {
+    background-color: var(--colors-grey-2);
+    color: var(--colors-white);
+}

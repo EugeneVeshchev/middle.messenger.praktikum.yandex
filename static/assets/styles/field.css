@@ -8,7 +8,8 @@
     border-radius: var(--gap-4);
     padding: var(--gap-8);
     font-size: var(--typography-h3-font-size);
-    height: var(--typography-h3-font-size);
+    width: 100%;
+    box-sizing: border-box;
     color: var(--colors-black);
 }
 .field_primary .field__input {
