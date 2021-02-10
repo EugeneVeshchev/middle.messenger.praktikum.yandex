@@ -1,0 +1,38 @@
+.button {
+    color: var(--colors-white);
+    font-family: var(--common-font-family);
+    font-size: var(--typography-h3-font-size);
+    order: 0;
+    cursor: pointer;
+    display: inline-flex;
+    margin: 0;
+    outline: 0;
+    border: 0;
+    padding: var(--gap-8);
+    position: relative;
+    align-items: center;
+    user-select: none;
+    border-radius: var(--gap-4);
+    vertical-align: middle;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.button_primary {
+    background-color: var(--colors-blue);
+}
+.button_secondary {
+    background-color: var(--colors-blue-2);
+}
+.button_transparent {
+    color: var(--colors-blue);
+    background-color: transparent;
+}
+
+.button_left-align {
+    justify-content: flex-start;
+}
+
+.button_full-width {
+    flex: 1;
+}

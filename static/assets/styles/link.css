@@ -1,0 +1,27 @@
+.link {
+    cursor: pointer;
+    text-decoration: none;
+    font-size: var(--typography-h3-font-size);
+    display: flex;
+    align-items: center;
+}
+
+.link_primary {
+    color: var(--colors-blue)
+}
+.link_secondary {
+    color: var(--colors-blue-2)
+}
+.link_error {
+    color: var(--colors-red)
+}
+
+.link__icon {
+    color: inherit;
+}
+.link__icon_left {
+    margin-right: var(--gap-4);
+}
+.link__icon_right {
+    margin-left: var(--gap-4);
+}

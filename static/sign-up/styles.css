@@ -1,0 +1,24 @@
+.sign-up-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign-up-page__form {
+    min-width: 320px;
+    border-radius: var(--gap-4);
+    padding: var(--gap-16);
+    background-color: var(--colors-white);
+    box-shadow: var(--card-box-shadow);
+}
+
+.sign-up-page__form > * {
+    margin: var(--gap-24) 0;
+}
+.sign-up-page__form > *:first-child {
+    margin-top: 0;
+}
+.sign-up-page__form > *:last-child {
+    margin-bottom: 0;
+}
+

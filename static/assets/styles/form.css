@@ -1,0 +1,17 @@
+.form {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.form__column {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.form__column_center {
+    align-items: center;
+}
+
+.form__row {
+    display: inline-flex;
+}

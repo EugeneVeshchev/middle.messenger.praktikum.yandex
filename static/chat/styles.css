@@ -1,0 +1,118 @@
+.chats-page {
+    display: flex;
+}
+
+/* LEFT PANEL */
+.chats-page__chats-list {
+    display: flex;
+    flex-direction: column;
+    width: var(--chats-list-width);
+    border-right: 1px solid var(--colors-grey-3);
+}
+
+.chats-page__list-header {
+    display: flex;
+    align-items: center;
+    padding: var(--gap-8);
+}
+
+.chats-page__menu-button {
+    position: relative;
+}
+.chats-page__chat-menu {
+    position: absolute;
+    transform: translate(-50%, 50%);
+    visibility: hidden;
+
+}
+.chats-page__menu-button:focus .chats-page__chat-menu {
+    visibility: visible;
+}
+
+.chats-page__search-form {
+    flex: 1;
+}
+
+.chats-page__chats-previews {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+}
+
+/* SEARCH PANEL */
+.chats-page__search-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transform: translate(calc(-1 * var(--chats-list-width)), 0);
+    background-color: var(--colors-white);
+    margin: 0;
+    padding: 0;
+}
+
+.chats-page__search-panel_active {
+    transition: transform .5s;
+    transform: translate(0, 0);
+}
+
+
+/* RIGHT PANEL */
+.chats-page__chat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.chats-page__chat_empty {
+    justify-content: center;
+    align-items: center;
+}
+
+.chats-page__chat_empty-text {
+    color: var(--colors-grey-3)
+}
+
+.chats-page__chat-header {
+    padding: var(--gap-8) var(--gap-8) var(--gap-4);
+    display: flex;
+    align-items: center;
+}
+
+.chats-page__chat-name {
+    flex: 1;
+}
+
+.chats-page__chat-messages {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: var(--gap-8);
+}
+
+.chats-page__send-form {
+    display: flex;
+    padding: var(--gap-4) var(--gap-8) var(--gap-8);
+}
+
+.chats-page__send-button {
+    position: relative;
+}
+.chats-page__send-menu {
+    position: absolute;
+    transform: translate(50%, -50%);
+    visibility: hidden;
+}
+.chats-page__send-button:focus .chats-page__send-menu {
+    visibility: visible;
+}
+
+.chats-page__send-field {
+    flex: 1
+}

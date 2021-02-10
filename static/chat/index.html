@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Homer - Чаты</title>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+          rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles/variables.css">
+    <link rel="stylesheet" href="/assets/styles/heading.css">
+    <link rel="stylesheet" href="/assets/styles/field.css">
+    <link rel="stylesheet" href="/assets/styles/avatar.css">
+    <link rel="stylesheet" href="/assets/styles/link.css">
+    <link rel="stylesheet" href="/assets/styles/divider.css">
+    <link rel="stylesheet" href="/assets/styles/badge.css">
+    <link rel="stylesheet" href="/assets/styles/time-badge.css">
+    <link rel="stylesheet" href="/assets/styles/form.css">
+    <link rel="stylesheet" href="/assets/styles/icon-button.css">
+    <link rel="stylesheet" href="/assets/styles/context-menu.css">
+    <link rel="stylesheet" href="/assets/styles/chat-preview.css">
+    <link rel="stylesheet" href="/assets/styles/chat-message.css">
+    <link rel="stylesheet" href="/assets/styles/common.css">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="/assets/js/form.js"></script>
+</head>
+<body>
+<div class="page chats-page">
+
+    <!--  LEFT PANEL  -->
+    <aside class="content_column-4 chats-page__chats-list">
+        <nav class="content_row-4 chats-page__list-header">
+            <div class="avatar avatar_small"></div>
+            <form class="form chats-page__search-form" onsubmit="consoleFormFields(event)">
+                <div class="field field_primary">
+                    <input
+                            class="field__input"
+                            id="search"
+                            required
+                            name="search"
+                            placeholder="Поиск"
+                    >
+                </div>
+            </form>
+            <a class="link link_primary" href="/profile">
+                Профиль
+                <i class="material-icons link__icon link__icon_right">keyboard_arrow_right</i>
+            </a>
+        </nav>
+
+        <hr class="divider"/>
+
+        <ul class="content_column-4 chats-page__chats-previews">
+            <li class="chat-preview">
+                <div class="avatar"></div>
+                <div class="chat-preview__texts">
+                    <div class="chat-preview__name">
+                        Название чата
+                    </div>
+                    <div class="chat-preview__messages">
+                        Достаточно длинное сообщение отображаемое в превью чата
+                    </div>
+                </div>
+                <div class="chat-preview__badges">
+                    <div class="badge badge_primary">5</div>
+                    <div class="time-badge">15:21</div>
+                </div>
+            </li>
+            <hr class="divider"/>
+            <li class="chat-preview">
+                <div class="avatar"></div>
+                <div class="chat-preview__texts">
+                    <div class="chat-preview__name">
+                        Название чата 2
+                    </div>
+                    <div class="chat-preview__messages">
+                        Достаточно длинное сообщение отображаемое в превью чата, достаточно длинное сообщение отображаемое в превью чата
+                    </div>
+                </div>
+                <div class="chat-preview__badges">
+                    <div class="time-badge">15:21</div>
+                </div>
+            </li>
+            <hr class="divider"/>
+            <li class="chat-preview chat-preview_active">
+                <div class="avatar"></div>
+                <div class="chat-preview__texts">
+                    <div class="chat-preview__name">
+                        Название чата 3
+                    </div>
+                    <div class="chat-preview__messages">
+                        Достаточно длинное сообщение отображаемое в превью чата, достаточно длинное сообщение отображаемое в превью чата
+                    </div>
+                </div>
+                <div class="chat-preview__badges">
+                    <div class="time-badge">15:21</div>
+                </div>
+            </li>
+            <hr class="divider"/>
+
+
+            <li class="chat-preview">
+                <div class="avatar"></div>
+                <div class="chat-preview__texts">
+                    <div class="chat-preview__name">
+                        Название чата
+                    </div>
+                    <div class="chat-preview__messages">
+                        Достаточно длинное сообщение отображаемое в превью чата
+                    </div>
+                </div>
+                <div class="chat-preview__badges">
+                    <div class="time-badge">21:58</div>
+                </div>
+            </li>
+            <hr class="divider"/>
+            <li class="chat-preview">
+                <div class="avatar"></div>
+                <div class="chat-preview__texts">
+                    <div class="chat-preview__name">
+                        Название чата
+                    </div>
+                    <div class="chat-preview__messages">
+                        Достаточно длинное сообщение отображаемое в превью чата
+                    </div>
+                </div>
+                <div class="chat-preview__badges">
+                    <div class="time-badge">21:58</div>
+                </div>
+            </li>
+            <hr class="divider"/>
+            <li class="chat-preview">
+                <div class="avatar"></div>
+                <div class="chat-preview__texts">
+                    <div class="chat-preview__name">
+                        Название чата
+                    </div>
+                    <div class="chat-preview__messages">
+                        Достаточно длинное сообщение отображаемое в превью чата
+                    </div>
+                </div>
+                <div class="chat-preview__badges">
+                    <div class="time-badge">21:58</div>
+                </div>
+            </li>
+            <hr class="divider"/>
+            <li class="chat-preview">
+                <div class="avatar"></div>
+                <div class="chat-preview__texts">
+                    <div class="chat-preview__name">
+                        Название чата
+                    </div>
+                    <div class="chat-preview__messages">
+                        Достаточно длинное сообщение отображаемое в превью чата
+                    </div>
+                </div>
+                <div class="chat-preview__badges">
+                    <div class="time-badge">21:58</div>
+                </div>
+            </li>
+            <hr class="divider"/>
+            <li class="chat-preview">
+                <div class="avatar"></div>
+                <div class="chat-preview__texts">
+                    <div class="chat-preview__name">
+                        Название чата
+                    </div>
+                    <div class="chat-preview__messages">
+                        Достаточно длинное сообщение отображаемое в превью чата
+                    </div>
+                </div>
+                <div class="chat-preview__badges">
+                    <div class="time-badge">21:58</div>
+                </div>
+            </li>
+            <hr class="divider"/>
+            <li class="chat-preview">
+                <div class="avatar"></div>
+                <div class="chat-preview__texts">
+                    <div class="chat-preview__name">
+                        Название чата
+                    </div>
+                    <div class="chat-preview__messages">
+                        Достаточно длинное сообщение отображаемое в превью чата
+                    </div>
+                </div>
+                <div class="chat-preview__badges">
+                    <div class="time-badge">21:58</div>
+                </div>
+            </li>
+            <hr class="divider"/>
+            <li class="chat-preview">
+                <div class="avatar"></div>
+                <div class="chat-preview__texts">
+                    <div class="chat-preview__name">
+                        Название чата
+                    </div>
+                    <div class="chat-preview__messages">
+                        Достаточно длинное сообщение отображаемое в превью чата
+                    </div>
+                </div>
+                <div class="chat-preview__badges">
+                    <div class="time-badge">21:58</div>
+                </div>
+            </li>
+            <hr class="divider"/>
+            <li class="chat-preview">
+                <div class="avatar"></div>
+                <div class="chat-preview__texts">
+                    <div class="chat-preview__name">
+                        Название чата
+                    </div>
+                    <div class="chat-preview__messages">
+                        Достаточно длинное сообщение отображаемое в превью чата
+                    </div>
+                </div>
+                <div class="chat-preview__badges">
+                    <div class="time-badge">21:58</div>
+                </div>
+            </li>
+            <hr class="divider"/>
+            <li class="chat-preview">
+                <div class="avatar"></div>
+                <div class="chat-preview__texts">
+                    <div class="chat-preview__name">
+                        Название чата
+                    </div>
+                    <div class="chat-preview__messages">
+                        Достаточно длинное сообщение отображаемое в превью чата
+                    </div>
+                </div>
+                <div class="chat-preview__badges">
+                    <div class="time-badge">21:58</div>
+                </div>
+            </li>
+            <hr class="divider"/>
+        </ul>
+    </aside>
+    <!--    -->
+
+    <!--  RIGHT PANEL  -->
+    <section class="content_column-4 chats-page__chat">
+        <header class="content_row-4 chats-page__chat-header">
+            <div class="avatar"></div>
+            <h1 class="heading heading_h1 chats-page__chat-name">Название чата 3</h1>
+            <button class="icon-button chats-page__menu-button">
+                <i class="material-icons">more_vert</i>
+
+                <!-- Context menu for chat -->
+                <ul class="content_column-4 context-menu chats-page__chat-menu">
+                    <li class="context-menu__item">
+                        <i class="material-icons context-menu__icon">add_circle_outline</i>
+                        <span class="context-menu__text">
+                            Добавить пользователя
+                        </span>
+                    </li>
+                    <li class="context-menu__item">
+                        <i class="material-icons context-menu__icon">highlight_off</i>
+                        <span class="context-menu__text">
+                            Удалить пользователя
+                        </span>
+                    </li>
+                </ul>
+            </button>
+        </header>
+        <hr class="divider"/>
+        <main class="content_column-4 chats-page__chat-messages">
+            <div class="chat-message">
+                <div class="chat-message__content">
+                    <div class="chat-message__text">
+                        Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
+                        </br></br>
+                        Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.
+                    </div>
+                    <div class="chat-message__badges">
+                        <div class="time-badge">18:19</div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-message">
+                <div class="chat-message__content">
+                    <div class="chat-message__text">
+                        Короткое сообщение
+                    </div>
+                    <div class="chat-message__badges">
+                        <div class="time-badge">18:20</div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-message">
+                <div class="chat-message__content">
+                    <img class="chat-message__img" src="/assets/images/camera.png"/>
+                    <div class="chat-message__badges">
+                        <div class="time-badge">18:22</div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-message chat-message_self">
+                <div class="chat-message__content">
+                    <div class="chat-message__text">
+                        Привет! Круто!
+                    </div>
+                    <div class="chat-message__badges">
+                        <div class="time-badge">19:39</div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-message chat-message_self">
+                <div class="chat-message__content">
+                    <img class="chat-message__img" src="/assets/images/camera.png"/>
+                    <div class="chat-message__badges">
+                        <div class="time-badge">19:40</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <hr class="divider"/>
+
+        <form class="content_row-4 chats-page__send-form" onsubmit="consoleFormFields(event)">
+            <button class="icon-button chats-page__send-button" type="button">
+                <i class="material-icons">attach_file</i>
+
+                <!-- Context menu for send -->
+                <ul class="content_column-4 context-menu chats-page__send-menu">
+                    <li class="context-menu__item">
+                        <i class="material-icons context-menu__icon">add_photo_alternate</i>
+                        <span class="context-menu__text">
+                            Фото или видео
+                        </span>
+                    </li>
+                    <li class="context-menu__item">
+                        <i class="material-icons context-menu__icon">insert_drive_file</i>
+                        <span class="context-menu__text">
+                            Файл
+                        </span>
+                    </li>
+                    <li class="context-menu__item">
+                        <i class="material-icons context-menu__icon">location_on</i>
+                        <span class="context-menu__text">
+                            Локация
+                        </span>
+                    </li>
+                </ul>
+            </button>
+            <div class="field field_primary chats-page__send-field">
+                <input
+                        class="field__input"
+                        id="message"
+                        autocomplete="false"
+                        required
+                        name="message"
+                        placeholder="Ввидите сообщение"
+                >
+            </div>
+            <button class="icon-button icon-button_primary" type="submit">
+                <i class="material-icons">send</i>
+            </button>
+        </form>
+    </section>
+    <!--    -->
+</div>
+</body>
+</html>
