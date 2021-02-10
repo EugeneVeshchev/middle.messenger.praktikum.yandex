@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+          rel="stylesheet">
     <link rel="stylesheet" href="/assets/styles/variables.css">
     <link rel="stylesheet" href="/assets/styles/heading.css">
     <link rel="stylesheet" href="/assets/styles/field.css">
@@ -25,8 +27,8 @@
 <div class="page chats-page">
 
     <!--  LEFT PANEL  -->
-    <div class="content_column-4 chats-page__chats-list">
-        <div class="content_row-4 chats-page__list-header">
+    <aside class="content_column-4 chats-page__chats-list">
+        <nav class="content_row-4 chats-page__list-header">
             <div class="avatar avatar_small"></div>
             <form class="form chats-page__search-form">
                 <div class="field field_primary">
@@ -44,7 +46,7 @@
                 Профиль
                 <i class="material-icons link__icon link__icon_right">keyboard_arrow_right</i>
             </a>
-        </div>
+        </nav>
 
         <hr class="divider"/>
 
@@ -106,13 +108,15 @@
         </ul>
         </a>
 
-    </div>
+    </aside>
     <!--    -->
 
     <!--  RIGHT PANEL  -->
-    <div class="content_column-4 chats-page__chat chats-page__chat_empty">
-        <h3 class="heading heading_h1">Выберите чат, чтобы начать общение</h3>
-    </div>
+    <section class="content_column-4 chats-page__chat chats-page__chat_empty">
+        <h3 class="heading heading_h1 chats-page__chat_empty-text">
+            Выберите чат, чтобы начать общение
+        </h3>
+    </section>
     <!--    -->
 </div>
 <script src="/assets/js/chat-search-panel.js"></script>

@@ -72,6 +72,9 @@
 .chats-page__chat_empty {
     justify-content: center;
     align-items: center;
+}
+
+.chats-page__chat_empty-text {
     color: var(--colors-grey-3)
 }
 
