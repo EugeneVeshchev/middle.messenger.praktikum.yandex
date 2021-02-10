@@ -1,5 +1,6 @@
 html {
     --common-font-family: "Roboto", "Roboto Light", sans-serif;
+    --typography-error-code-font-size: 48px;
     --typography-h1-font-size: 24px;
     --typography-h2-font-size: 18px;
     --typography-h3-font-size: 14px;
