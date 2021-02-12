@@ -24,6 +24,7 @@
 .chat-message__text {
     color: var(--colors-black);
     font-size: var(--typography-h5-font-size);
+    margin: 0;
 }
 
 .chat-message__img {
