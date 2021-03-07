@@ -2,12 +2,13 @@
   "name": "homer",
   "version": "0.0.1",
   "description": "Messenger",
-  "main": "server.js",
+  "main": "server.ts",
   "engines": {
     "node": ">=12.0.0"
   },
   "scripts": {
-    "start": "node ./server.js"
+    "tsc:compile": "tsc -b .",
+    "start": "yarn tsc:compile && node ./server.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,13 @@
   },
   "homepage": "https://github.com/EugeneVeshchev/mf.messenger.praktikum.yandex#readme",
   "devDependencies": {
-    "express": "^4.17.1"
+    "@types/handlebars": "^4.1.0",
+    "@types/express": "^4.17.11",
+    "@types/node": "^14.14.31",
+    "express": "^4.17.1",
+    "typescript": "^4.2.2"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.7"
   }
 }

@@ -1,0 +1,16 @@
+.dialog {
+    padding: var(--gap-16);
+    display: flex;
+    flex-direction: column;
+    visibility: hidden;
+    opacity: 0;
+    box-shadow: var(--card-box-shadow);
+    background-color: var(--colors-white);
+    border-radius: var(--gap-4);
+}
+
+.dialog_active {
+    transition: opacity .5s;
+    opacity: 1;
+    visibility: visible;
+}
