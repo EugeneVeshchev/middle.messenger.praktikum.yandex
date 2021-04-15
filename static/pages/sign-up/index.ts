@@ -1,6 +1,5 @@
-import Block from "../../utils/Block";
+import Block from "../../modules/block/Block";
 import compileTemplate from "../../utils/compileTemplate";
-import render from "../../utils/renderDom";
 import Logotype from "../../components/common/Logotype";
 import Heading from "../../components/common/Heading";
 import Button from "../../components/common/Button";
@@ -8,6 +7,7 @@ import Link from "../../components/common/Link";
 import {template} from "./template";
 import {emailRegExp, FormHelperMeta, getFormData} from "../../utils/FormHelper";
 import {FormFields} from "../../components/common/FormFields";
+import Router from "../../modules/router/Router";
 
 type SignUpModel = {
     email?: string;
@@ -18,7 +18,7 @@ type SignUpModel = {
     password?: string;
     repeat_password?: string;
 }
-class SignUp extends Block<FormHelperMeta<SignUpModel>> {
+export class SignUpPage extends Block<FormHelperMeta<SignUpModel>> {
 
     constructor() {
         const signUn = getFormData<SignUpModel>({
@@ -60,7 +60,21 @@ class SignUp extends Block<FormHelperMeta<SignUpModel>> {
             },
             onSubmit: console.log
         })
-        super(signUn);
+        super({
+            ...signUn,
+            events: [
+                ...signUn.events,
+                {
+                    selectors: '.sign-in-link',
+                    type: 'click',
+                    callback: (e) => {
+                        e.preventDefault();
+                        const router = new Router();
+                        router.go('/sign-in/')
+                    }
+                }
+            ]
+        });
     }
 
     get logotype() {
@@ -128,9 +142,9 @@ class SignUp extends Block<FormHelperMeta<SignUpModel>> {
                 type: "submit",
             }).render(),
             new Link({
-                href: "/sign-in",
                 title: "Войти",
                 type: "button",
+                className: 'sign-in-link'
             }).render(),
         ]
     }
@@ -145,8 +159,3 @@ class SignUp extends Block<FormHelperMeta<SignUpModel>> {
         })
     }
 }
-
-render(
-    "#app",
-    new SignUp()
-)

@@ -1,4 +1,4 @@
-import Block from "../../../utils/Block";
+import Block from "../../../modules/block/Block";
 import {ContextMenuItem, ContextMenuItemProps} from "../ContextMenuItem";
 import compileTemplate from "../../../utils/compileTemplate";
 import {template} from "./template";

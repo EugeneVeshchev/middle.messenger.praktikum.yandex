@@ -1,10 +1,10 @@
-import Block from "../../utils/Block";
+import Block from "../../modules/block/Block";
 import compileTemplate from "../../utils/compileTemplate";
 import {template} from "./template";
-import render from "../../utils/renderDom";
 import {ChatSideBar, ChatSideBarProps} from "../../components/chats/ChatSideBar";
 import {Chat} from "../../components/chats/Chat";
 import {ChatSelectHint} from "../../components/chats/ChatSelectHint";
+import Router from "../../modules/router/Router";
 
 const defaultSelectedChatIdx = 3;
 const mockChats = Array.from({length: 20}, (_, idx) => ({
@@ -31,17 +31,29 @@ type ChatsPageProps = {
     activeChatIdx?: number;
     chats: ChatSideBarProps['chats'],
 }
-class ChatsPage extends Block<ChatsPageProps> {
+
+export class ChatsPage extends Block<ChatsPageProps> {
 
     constructor() {
         super({
             activeChatIdx: defaultSelectedChatIdx,
             chats: mockChats,
+            events: [
+                {
+                    type: 'click',
+                    selectors: '.profile-link',
+                    callback: (e) => {
+                        e.preventDefault();
+                        const router = new Router();
+                        router.go('/profile/')
+                    }
+                }
+            ]
         });
     }
 
     get chatSideBar() {
-        const { chats } = this.props;
+        const {chats} = this.props;
         return new ChatSideBar({
             chats
         }).render()
@@ -63,15 +75,10 @@ class ChatsPage extends Block<ChatsPageProps> {
     }
 
     render() {
-        const { chatSideBar, chat } = this;
+        const {chatSideBar, chat} = this;
         return compileTemplate(template, {
             chatSideBar,
             chat
         })
     }
 }
-
-render(
-    '#app',
-    new ChatsPage()
-)

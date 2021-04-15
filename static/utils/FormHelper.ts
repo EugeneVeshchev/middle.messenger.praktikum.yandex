@@ -1,4 +1,4 @@
-import {EventModel} from "./Block";
+import {EventModel} from "../modules/block/Block";
 
 type Errors<TValues> = { [K in keyof TValues]?: string };
 type Options<TValues> = {
@@ -64,16 +64,16 @@ export class FormHelper<TValues> {
                 callback: this._handleSubmit,
                 selectors: formSelector
             },
-            {
-                type: 'focus',
-                callback: this._handleFocus,
-                selectors: fieldSelector
-            },
-            {
-                type: 'blur',
-                callback: this._handleBlur,
-                selectors: fieldSelector
-            },
+            // {
+            //     type: 'focus',
+            //     callback: this._handleFocus,
+            //     selectors: fieldSelector
+            // },
+            // {
+            //     type: 'blur',
+            //     callback: this._handleBlur,
+            //     selectors: fieldSelector
+            // },
             {
                 type: 'change',
                 callback: this._handleChange,

@@ -1,5 +1,4 @@
-import render from "../../utils/renderDom";
-import Block from "../../utils/Block";
+import Block from "../../modules/block/Block";
 import compileTemplate from "../../utils/compileTemplate";
 import Logotype from "../../components/common/Logotype/index";
 import Heading from "../../components/common/Heading/index";
@@ -8,6 +7,7 @@ import Link from "../../components/common/Link/index";
 import {template} from "./template";
 import {FormHelperMeta, getFormData} from "../../utils/FormHelper";
 import {FormFields} from "../../components/common/FormFields";
+import Router from "../../modules/router/Router";
 
 type SignInModel = {
     login?: string;
@@ -15,7 +15,7 @@ type SignInModel = {
 }
 
 type SignInProps = FormHelperMeta<SignInModel>
-class SignIn extends Block<SignInProps> {
+export class SignInPage extends Block<SignInProps> {
     constructor() {
         const signIn = getFormData<SignInModel>({
             initialValues: {},
@@ -23,12 +23,12 @@ class SignIn extends Block<SignInProps> {
             validating: {
                 login: (value) => {
                     if (!value) {
-                        return 'Заполните обязатлеьное поле'
+                        return 'Заполните обязательное поле'
                     }
                 },
                 password: (value) => {
                     if (!value) {
-                        return 'Заполните обязатлеьное поле'
+                        return 'Заполните обязательное поле'
                     }
                 }
             },
@@ -40,7 +40,30 @@ class SignIn extends Block<SignInProps> {
             onSubmit: console.log
         })
 
-        super(signIn);
+        super({
+            ...signIn,
+            events: [
+                ...signIn.events,
+                {
+                    selectors: '.sign-up-link',
+                    type: 'click',
+                    callback: (e) => {
+                        e.preventDefault();
+                        const router = new Router();
+                        router.go('/sign-up/');
+                    }
+                },
+                {
+                    selectors: '.demo-link',
+                    type: 'click',
+                    callback: (e) => {
+                        e.preventDefault();
+                        const router = new Router();
+                        router.go('/chats/');
+                    }
+                }
+            ]
+        });
     }
 
     get logotype() {
@@ -80,14 +103,14 @@ class SignIn extends Block<SignInProps> {
                 type: "submit",
             }).render(),
             new Link({
-                href: "/sign-up",
                 title: "Нет аккаунта?",
                 type: "button",
+                className: 'sign-up-link',
             }).render(),
             new Link({
-                href: "/chats",
                 title: "Демо версия",
                 type: "button",
+                className: 'demo-link',
             }).render()
         ]
     }
@@ -102,8 +125,3 @@ class SignIn extends Block<SignInProps> {
         })
     }
 }
-
-render(
-    "#app",
-    new SignIn()
-)

@@ -1,4 +1,4 @@
-import Block from "../../../utils/Block";
+import Block from "../../../modules/block/Block";
 import compileTemplate from "../../../utils/compileTemplate";
 import {template} from "./template";
 import {ChatPreviewList, ChatPreviewListProps} from "../ChatPreviewList";
@@ -31,7 +31,7 @@ export class ChatSideBar extends Block<ChatSideBarProps> {
 
     get profileLink() {
         return new Link({
-            href: '/profile',
+            className: 'profile-link',
             variant: 'primary',
             title: 'Профиль',
             rightIcon: new Icon({

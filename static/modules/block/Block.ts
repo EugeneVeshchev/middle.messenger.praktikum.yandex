@@ -1,4 +1,4 @@
-import EventBus from "./EventBus";
+import EventBus from "../../utils/EventBus";
 
 interface Meta<TProps> {
     tagName: string;
@@ -149,5 +149,12 @@ export default class Block<TInitProps extends object = {}, TProps extends (TInit
     _createDocumentElement(tagName: string) {
         // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
         return document.createElement(tagName);
+    }
+
+    hide() {
+        this.getContent().style.display = "none";
+    }
+    show() {
+        this.getContent().style.display = "block";
     }
 }

@@ -1,10 +1,10 @@
-import Block from "../../utils/Block";
+import Block from "../../modules/block/Block";
 import compileTemplate from "../../utils/compileTemplate";
-import render from "../../utils/renderDom";
 import {ProfileHeader} from "../../components/profile/ProfileHeader";
 import {ProfileInfo, ProfileInfoProps} from "../../components/profile/ProfileInfo";
 import {template} from "./template";
 import {emailRegExp, getFormData} from "../../utils/FormHelper";
+import Router from "../../modules/router/Router";
 
 const mockUser = {
     email: 'test@test.test',
@@ -16,7 +16,7 @@ const mockUser = {
 }
 export type User = typeof mockUser;
 
-class ProfilePage extends Block<ProfileInfoProps> {
+export class ProfilePage extends Block<ProfileInfoProps> {
     constructor() {
         const {events, ...profile} = getFormData({
             initialValues: mockUser,
@@ -106,6 +106,24 @@ class ProfilePage extends Block<ProfileInfoProps> {
                     },
                     selectors: '.profile-page__change-password .dialog-header__close-btn'
                 },
+                {
+                    type: 'click',
+                    callback: (e) => {
+                        e.preventDefault();
+                        const router = new Router();
+                        router.go('/chats/')
+                    },
+                    selectors: '.chats-link'
+                },
+                {
+                    type: 'click',
+                    callback: (e) => {
+                        e.preventDefault();
+                        const router = new Router();
+                        router.go('/sign-in/')
+                    },
+                    selectors: '.sign-out-link'
+                },
                 ...events,
             ]
         });
@@ -138,8 +156,3 @@ class ProfilePage extends Block<ProfileInfoProps> {
         })
     }
 }
-
-render(
-    '#app',
-    new ProfilePage()
-)

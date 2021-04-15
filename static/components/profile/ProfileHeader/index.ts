@@ -1,4 +1,4 @@
-import Block from "../../../utils/Block";
+import Block from "../../../modules/block/Block";
 import compileTemplate from "../../../utils/compileTemplate";
 import {template} from "./template";
 import Link from "../../common/Link";
@@ -8,7 +8,7 @@ export class ProfileHeader extends Block {
 
     get chatsLink() {
         return new Link({
-            href: '/chats',
+            className: 'chats-link',
             title: 'Чаты',
             variant: 'primary',
             leftIcon: new Icon({
@@ -18,7 +18,7 @@ export class ProfileHeader extends Block {
     }
     get signOutLink() {
         return new Link({
-            href: '/sign-in',
+            className: 'sign-out-link',
             title: 'Выйти',
             variant: 'error',
             rightIcon: new Icon({
