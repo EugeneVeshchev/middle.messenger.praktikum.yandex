@@ -1,13 +1,14 @@
 import Block from "../../modules/block/Block";
-import compileTemplate from "../../utils/compileTemplate";
+import { compileTemplate } from "../../utils/compileTemplate";
 import Logotype from "../../components/common/Logotype";
 import Heading from "../../components/common/Heading";
 import Button from "../../components/common/Button";
 import Link from "../../components/common/Link";
 import {template} from "./template";
-import {emailRegExp, FormHelperMeta, getFormData} from "../../utils/FormHelper";
+import {FormHelperMeta, getFormData} from "../../utils/FormHelper";
 import {FormFields} from "../../components/common/FormFields";
 import Router from "../../modules/router/Router";
+import {EMAIL_REGEXP} from "../../constants";
 
 type SignUpModel = {
     email?: string;
@@ -29,7 +30,7 @@ export class SignUpPage extends Block<FormHelperMeta<SignUpModel>> {
                     if (!email) {
                         return 'Заполните обязательное поле'
                     }
-                    if (!emailRegExp.test(email)) {
+                    if (!EMAIL_REGEXP.test(email)) {
                         return 'Введите валидный email'
                     }
                 },

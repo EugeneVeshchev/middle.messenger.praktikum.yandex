@@ -1,5 +1,5 @@
 import Block from "../../../modules/block/Block";
-import compileTemplate from "../../../utils/compileTemplate";
+import { compileTemplate } from "../../../utils/compileTemplate";
 import Link from "../Link";
 import Heading from "../Heading";
 import {template} from "./template";

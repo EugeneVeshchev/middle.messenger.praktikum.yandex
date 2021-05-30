@@ -1,5 +1,5 @@
 import Block from "../../../modules/block/Block";
-import compileTemplate from "../../../utils/compileTemplate";
+import { compileTemplate } from "../../../utils/compileTemplate";
 import {template} from "./template";
 import {ChatPreviewList, ChatPreviewListProps} from "../ChatPreviewList";
 import Link from "../../common/Link";
@@ -15,7 +15,7 @@ export class ChatSideBar extends Block<ChatSideBarProps> {
 
     get userAvatar() {
         return new Avatar({
-            size: 'small'
+            variant: 'small'
         }).render()
     }
 

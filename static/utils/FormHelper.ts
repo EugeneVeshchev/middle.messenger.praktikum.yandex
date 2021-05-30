@@ -10,6 +10,17 @@ type Options<TValues> = {
     selector?: string;
 };
 
+export type FormHelperData<TValues> = Pick<FormHelper<TValues>, 'events' | 'values' | 'errors'>
+export type FormHelperMeta<TValues> = Pick<FormHelper<TValues>, 'values' | 'errors'>
+export const getFormData = <TValues>(options: Options<TValues>): FormHelperData<TValues> => {
+    const {events, values, errors} = new FormHelper(options)
+    return {
+        events,
+        values,
+        errors
+    }
+}
+
 export class FormHelper<TValues> {
     static SELECTORS = {
         form: '.form',
@@ -144,7 +155,7 @@ export class FormHelper<TValues> {
         event.preventDefault();
         const target = event.target as HTMLFormElement;
         const formData = new FormData(target)
-        const values: TValues = {} as TValues;
+        const values = {} as TValues;
         formData.forEach((value, key) => {
             values[key as keyof TValues] = value as unknown as TValues[keyof TValues]
         })
@@ -161,14 +172,3 @@ export class FormHelper<TValues> {
     }
 }
 
-export type FormHelperData<TValues> = Pick<FormHelper<TValues>, 'events' | 'values' | 'errors'>
-export type FormHelperMeta<TValues> = Pick<FormHelper<TValues>, 'values' | 'errors'>
-export const getFormData = <TValues>(options: Options<TValues>): FormHelperData<TValues> => {
-    const {events, values, errors} = new FormHelper(options)
-    return {
-        events,
-        values,
-        errors
-    }
-}
-export const emailRegExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

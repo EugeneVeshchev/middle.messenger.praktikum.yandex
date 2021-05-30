@@ -1,5 +1,5 @@
 import Block from "../../../modules/block/Block";
-import compileTemplate from "../../../utils/compileTemplate";
+import { compileTemplate } from "../../../utils/compileTemplate";
 import {template} from "./template";
 import {Avatar} from "../../common/Avatar";
 import {TimeBadge} from "../../common/TimeBadge";
@@ -21,7 +21,7 @@ export class ChatPreview extends Block<ChatPreviewProps> {
         const isSmall = variant === "small";
         return new Avatar({
             src: avatar,
-            size: isSmall ? 'small' : undefined,
+            variant: isSmall ? 'small' : undefined,
         }).render()
     }
 

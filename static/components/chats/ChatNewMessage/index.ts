@@ -1,5 +1,5 @@
 import Block from "../../../modules/block/Block";
-import compileTemplate from "../../../utils/compileTemplate";
+import { compileTemplate } from "../../../utils/compileTemplate";
 import {template} from "./template";
 import {TextField} from "../../common/TextField";
 import {Icon} from "../../common/Icon";

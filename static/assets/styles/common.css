@@ -9,7 +9,7 @@ body {
     margin: 0;
 }
 
-#app, .page {
+#app, .page, #app > div {
     height: 100%;
     width: 100%;
 }

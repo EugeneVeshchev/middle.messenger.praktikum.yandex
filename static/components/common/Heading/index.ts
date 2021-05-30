@@ -1,5 +1,5 @@
 import Block from "../../../modules/block/Block";
-import compileTemplate from "../../../utils/compileTemplate";
+import { compileTemplate } from "../../../utils/compileTemplate";
 import {template} from "./template";
 
 type HeadingTagName = 'h1'| 'h2' | 'h3' | 'h4' | 'h5' | 'h6';

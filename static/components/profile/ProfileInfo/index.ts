@@ -1,5 +1,5 @@
 import Block from "../../../modules/block/Block";
-import compileTemplate from "../../../utils/compileTemplate";
+import { compileTemplate } from "../../../utils/compileTemplate";
 import {template} from "./template";
 import {Avatar} from "../../common/Avatar";
 import {FieldInfo} from "../../common/FieldInfo";
@@ -25,7 +25,7 @@ export class ProfileInfo extends Block<ProfileInfoProps> {
 
     get avatar() {
         return new Avatar({
-            size: 'large',
+            variant: 'large',
             isClickable: true,
         }).render()
     }

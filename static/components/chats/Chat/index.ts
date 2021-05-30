@@ -1,5 +1,5 @@
 import Block from "../../../modules/block/Block";
-import compileTemplate from "../../../utils/compileTemplate";
+import { compileTemplate } from "../../../utils/compileTemplate";
 import {template} from "./template";
 import {ChatHeader, ChatHeaderProps} from "../ChatHeader";
 import {ChatMessageList, ChatMessageListProps} from "../ChatMessageList";

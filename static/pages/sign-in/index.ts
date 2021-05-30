@@ -1,5 +1,5 @@
 import Block from "../../modules/block/Block";
-import compileTemplate from "../../utils/compileTemplate";
+import { compileTemplate } from "../../utils/compileTemplate";
 import Logotype from "../../components/common/Logotype/index";
 import Heading from "../../components/common/Heading/index";
 import Button from "../../components/common/Button/index";

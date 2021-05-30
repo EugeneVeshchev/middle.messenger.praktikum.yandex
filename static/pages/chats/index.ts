@@ -1,5 +1,5 @@
 import Block from "../../modules/block/Block";
-import compileTemplate from "../../utils/compileTemplate";
+import { compileTemplate } from "../../utils/compileTemplate";
 import {template} from "./template";
 import {ChatSideBar, ChatSideBarProps} from "../../components/chats/ChatSideBar";
 import {Chat} from "../../components/chats/Chat";

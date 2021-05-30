@@ -1,10 +1,11 @@
 import Block from "../../modules/block/Block";
-import compileTemplate from "../../utils/compileTemplate";
+import { compileTemplate } from "../../utils/compileTemplate";
 import {ProfileHeader} from "../../components/profile/ProfileHeader";
 import {ProfileInfo, ProfileInfoProps} from "../../components/profile/ProfileInfo";
 import {template} from "./template";
-import {emailRegExp, getFormData} from "../../utils/FormHelper";
+import {getFormData} from "../../utils/FormHelper";
 import Router from "../../modules/router/Router";
+import {EMAIL_REGEXP} from "../../constants";
 
 const mockUser = {
     email: 'test@test.test',
@@ -26,7 +27,7 @@ export class ProfilePage extends Block<ProfileInfoProps> {
                     if (!email) {
                         return 'Обязательное поле'
                     }
-                    if (!emailRegExp.test(email)) {
+                    if (!EMAIL_REGEXP.test(email)) {
                         return 'Введите валидный email'
                     }
                 }
