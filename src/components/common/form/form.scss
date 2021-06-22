@@ -1,17 +1,17 @@
 .form {
     display: inline-flex;
     flex-direction: column;
-}
 
-.form__column {
-    display: inline-flex;
-    flex-direction: column;
-}
+    &__column {
+        display: inline-flex;
+        flex-direction: column;
+    }
 
-.form__column_center {
-    align-items: center;
-}
+    &__column_center {
+        align-items: center;
+    }
 
-.form__row {
-    display: inline-flex;
+    &__row {
+        display: inline-flex;
+    }
 }

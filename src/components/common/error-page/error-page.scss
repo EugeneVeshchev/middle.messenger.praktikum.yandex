@@ -3,14 +3,14 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
 
-.error-page__code {
-    font-size: var(--typography-error-code-font-size);
-    color: var(--colors-black);
-    font-weight: bold;
-}
+    &__code {
+        font-size: var(--typography-error-code-font-size);
+        color: var(--colors-black);
+        font-weight: bold;
+    }
 
-.error-page__link {
-    font-size: var(--typography-h2-font-size);
+    &__link {
+        font-size: var(--typography-h2-font-size);
+    }
 }
