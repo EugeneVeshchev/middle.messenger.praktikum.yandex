@@ -9,7 +9,7 @@
 
 ## Прогресс
 <a name="progress"></a>
-- [x] Спринт 1
+- [x] Спринт 1 (https://github.com/EugeneVeshchev/mf.messenger.praktikum.yandex/pull/8)
 - [ ] Спринт 2 Добавлен шаблонизатор (Handlebars)
 - [ ] Спринт 3
 - [ ] Спринт 4
