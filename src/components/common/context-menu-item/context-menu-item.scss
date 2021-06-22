@@ -1,0 +1,22 @@
+.context-menu-item {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: var(--gap-8);
+    white-space: nowrap;
+}
+
+.context-menu-item:hover {
+    background-color: var(--colors-blue-3);
+}
+
+.context-menu-item__icon {
+    font-size: var(--typography-h2-font-size);
+    color: var(--colors-blue);
+    margin-right: var(--gap-4);
+}
+
+.context-menu-item__text {
+    color: var(--colors-black);
+    font-size: var(--typography-h4-font-size);
+}

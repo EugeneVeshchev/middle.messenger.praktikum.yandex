@@ -1,0 +1,8 @@
+.context-menu {
+    display: flex;
+    flex-direction: column;
+    padding: var(--gap-8) 0;
+    box-shadow: var(--card-box-shadow);
+    background-color: var(--colors-white);
+    border-radius: var(--gap-4);
+}

@@ -9,17 +9,16 @@
 
 ## Прогресс
 <a name="progress"></a>
-- [ ] Спринт 1
-- [ ] Спринт 2
+- [x] Спринт 1
+- [ ] Спринт 2 Добавлен шаблонизатор (Handlebars)
 - [ ] Спринт 3
 - [ ] Спринт 4
 
 **Доступные ссылки:**
 * [**Страница авторизации**](https://practical-mayer-0dc3d1.netlify.app/sign-in)
 * [**Страница регистрации**](https://practical-mayer-0dc3d1.netlify.app/sign-up)
-* [**Страница с НЕ выбранным чатом(с панелью поиском)**](https://practical-mayer-0dc3d1.netlify.app/)
-* [**Страница с выбранным чатом**](https://practical-mayer-0dc3d1.netlify.app/chat)
-* [**Страница профиля(изменение аватарки + изменение профиля + изменение пароля)**](https://practical-mayer-0dc3d1.netlify.app/profile)
+* [**Страница чатов**](https://practical-mayer-0dc3d1.netlify.app/chat)
+* [**Страница профиля**](https://practical-mayer-0dc3d1.netlify.app/profile)
 * [**Страница ошибки 404**](https://practical-mayer-0dc3d1.netlify.app/404)
 * [**Страница ошибки 50***](https://practical-mayer-0dc3d1.netlify.app/500)
 
