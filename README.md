@@ -33,6 +33,10 @@ npm install
 ```sh
 npm start
 ```
+Запуск production сборки (ВАЖНО: Выходным каталогом является static)
+```sh
+npm run build:static
+```
 
 ## **Примеры**
 <a name="examples"></a>
