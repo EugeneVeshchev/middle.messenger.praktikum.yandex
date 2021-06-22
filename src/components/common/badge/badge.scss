@@ -8,16 +8,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
 
-.badge_primary {
-    background-color: var(--colors-blue);
-}
+    &_primary {
+        background-color: var(--colors-blue);
+    }
 
-.badge_secondary {
-    background-color: var(--colors-blue-2);
-}
+    &_secondary {
+        background-color: var(--colors-blue-2);
+    }
 
-.badge_error {
-    background-color: var(--colors-red);
+    &_error {
+        background-color: var(--colors-red);
+    }
 }

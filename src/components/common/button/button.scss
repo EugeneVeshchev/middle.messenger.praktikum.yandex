@@ -16,23 +16,25 @@
     vertical-align: middle;
     justify-content: center;
     text-decoration: none;
-}
 
-.button_primary {
-    background-color: var(--colors-blue);
-}
-.button_secondary {
-    background-color: var(--colors-blue-2);
-}
-.button_transparent {
-    color: var(--colors-blue);
-    background-color: transparent;
-}
 
-.button_left-align {
-    justify-content: flex-start;
-}
+    &_primary {
+        background-color: var(--colors-blue);
+    }
+    &_secondary {
+        background-color: var(--colors-blue-2);
+    }
+    &_transparent {
+        color: var(--colors-blue);
+        background-color: transparent;
+    }
 
-.button_full-width {
-    flex: 1;
+    &_left-align {
+        justify-content: flex-start;
+    }
+
+    &_full-width {
+        flex: 1;
+    }
+
 }

@@ -3,54 +3,55 @@
     padding: var(--gap-8);
     cursor: pointer;
     margin: 0;
-}
-.chat-preview > * {
-    margin: 0 var(--gap-4);
-}
-.chat-preview > *:first-child {
-    margin-left: 0;
-}
-.chat-preview > *:last-child {
-    margin-right: 0;
-}
 
-.chat-preview_active {
-    background-color: var(--colors-blue-3);
-}
+    & > * {
+        margin: 0 var(--gap-4);
+        &:first-child {
+            margin-left: 0;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+    }
 
-.chat-preview__texts {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: hidden;
-    min-width: 200px;
-}
+    &_active {
+        background-color: var(--colors-blue-3);
+    }
 
-.chat-preview__name {
-    color: var(--colors-black);
-    font-size: var(--typography-h3-font-size);
-    font-weight: bold;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+    &_text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+        min-width: 200px;
+    }
 
-.chat-preview__messages {
-    color: var(--colors-black);
-    font-size: var(--typography-h4-font-size);
-    max-width: 100%;
-    max-height: calc(calc(var(--typography-h4-font-size) + 2px) * 2);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    margin: 0;
-}
+    &__name {
+        color: var(--colors-black);
+        font-size: var(--typography-h3-font-size);
+        font-weight: bold;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
-.chat-preview__badges {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    &__messages {
+        color: var(--colors-black);
+        font-size: var(--typography-h4-font-size);
+        max-width: 100%;
+        max-height: calc(calc(var(--typography-h4-font-size) + 2px) * 2);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        margin: 0;
+    }
+
+    &__badges {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 }

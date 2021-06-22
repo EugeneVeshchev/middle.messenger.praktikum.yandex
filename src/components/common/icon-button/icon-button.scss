@@ -11,19 +11,19 @@
     border: 0;
     background-color: transparent;
     cursor: pointer;
-}
 
-.icon-button_primary {
-    background-color: var(--colors-blue);
-    color: var(--colors-white);
-}
+    &_primary {
+        background-color: var(--colors-blue);
+        color: var(--colors-white);
+    }
 
-.icon-button_secondary {
-    background-color: var(--colors-blue-2);
-    color: var(--colors-white);
-}
+    &_secondary {
+        background-color: var(--colors-blue-2);
+        color: var(--colors-white);
+    }
 
-.icon-button_disabled {
-    background-color: var(--colors-grey-2);
-    color: var(--colors-white);
+    &_disabled {
+        background-color: var(--colors-grey-2);
+        color: var(--colors-white);
+    }
 }

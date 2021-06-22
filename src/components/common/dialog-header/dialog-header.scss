@@ -1,10 +1,10 @@
 .dialog-header {
     position: relative;
     padding: 0 var(--gap-32);
-}
 
-.dialog-header__close-btn {
-    position: absolute;
-    top: var(--gap-neg-8);
-    right: var(--gap-neg-8);
+    &__close-btn {
+        position: absolute;
+        top: var(--gap-neg-8);
+        right: var(--gap-neg-8);
+    }
 }

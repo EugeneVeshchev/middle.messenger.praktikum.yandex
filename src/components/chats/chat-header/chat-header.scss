@@ -2,21 +2,24 @@
     padding: var(--gap-8) var(--gap-8) var(--gap-4);
     display: flex;
     align-items: center;
-}
 
-.chat-header__chat-name {
-    flex: 1;
-}
+    &__chat-name {
+        flex: 1;
+    }
 
-.chat-header__menu-button {
-    position: relative;
-}
-.chat-header__chat-menu {
-    position: absolute;
-    transform: translate(-50%, 50%);
-    visibility: hidden;
+    &__menu-button {
+        position: relative;
+    }
 
-}
-.chat-header__menu-button:focus .chat-header__chat-menu {
-    visibility: visible;
+    &__chat-menu {
+        position: absolute;
+        transform: translate(-50%, 50%);
+        visibility: hidden;
+    }
+
+    &__menu-button {
+        &:focus .chat-header__chat-menu {
+            visibility: visible;
+        }
+    }
 }

@@ -1,21 +1,23 @@
 .chat-new-message {
-    display: flex;
-    padding: var(--gap-4) var(--gap-8) var(--gap-8);
-}
+  display: flex;
+  padding: var(--gap-4) var(--gap-8) var(--gap-8);
 
-.chat-new-message__send-button {
+  &__send-button {
     position: relative;
-}
-.chat-new-message__send-menu {
+  }
+
+  &__send-menu {
     top: 0;
     position: absolute;
     transform: translate(50%, -100%);
     visibility: hidden;
-}
-.chat-new-message__send-button:focus .chat-new-message__send-menu {
-    visibility: visible;
-}
+  }
 
-.chat-new-message__send-field {
+  &__send-field {
     flex: 1
+  }
+
+  &__send-button:focus &__send-menu {
+    visibility: visible;
+  }
 }
