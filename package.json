@@ -6,10 +6,13 @@
     "node": ">=12.0.0"
   },
   "scripts": {
+    "start": "yarn local:static && yarn local:server && node server.js",
     "build:static": "parcel build --no-scope-hoist 'src/pages/**/*.html' --dist-dir 'static'",
     "local:static": "parcel build --no-scope-hoist 'src/pages/**/*.html'",
     "local:server": "parcel build 'server.ts' --dist-dir './'",
-    "start": "yarn local:static && yarn local:server && node server.js"
+    "lint:eslint": "npx eslint '.'",
+    "lint:stylelint": "npx stylelint '**/*.scss'",
+    "lints:all": "yarn lint:eslint && yarn lint:stylelint"
   },
   "repository": {
     "type": "git",
