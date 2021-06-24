@@ -16,4 +16,4 @@ export const chatPreviewTemplate = `
             {{{timeBadge}}}
         </div>
     </li>
-`
+`;

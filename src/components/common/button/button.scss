@@ -1,40 +1,42 @@
 .button {
-    color: var(--colors-white);
-    font-family: var(--common-font-family);
-    font-size: var(--typography-h3-font-size);
-    order: 0;
-    cursor: pointer;
-    display: inline-flex;
-    margin: 0;
-    outline: 0;
-    border: 0;
-    padding: var(--gap-8);
-    position: relative;
-    align-items: center;
-    user-select: none;
-    border-radius: var(--gap-4);
-    vertical-align: middle;
-    justify-content: center;
-    text-decoration: none;
+  align-items: center;
+  border: 0;
+  border-radius: var(--gap-4);
+  color: var(--colors-white);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--common-font-family);
+  font-size: var(--typography-h3-font-size);
+  justify-content: center;
+  margin: 0;
+  order: 0;
+  outline: 0;
+  padding: var(--gap-8);
+  position: relative;
+  text-decoration: none;
+  user-select: none;
+  vertical-align: middle;
 
 
-    &_primary {
-        background-color: var(--colors-blue);
-    }
-    &_secondary {
-        background-color: var(--colors-blue-2);
-    }
-    &_transparent {
-        color: var(--colors-blue);
-        background-color: transparent;
-    }
+  &_primary {
+    background-color: var(--colors-blue);
+  }
 
-    &_left-align {
-        justify-content: flex-start;
-    }
+  &_secondary {
+    background-color: var(--colors-blue-2);
+  }
 
-    &_full-width {
-        flex: 1;
-    }
+  &_transparent {
+    background-color: transparent;
+    color: var(--colors-blue);
+  }
+
+  &_left-align {
+    justify-content: flex-start;
+  }
+
+  &_full-width {
+    flex: 1;
+  }
 
 }

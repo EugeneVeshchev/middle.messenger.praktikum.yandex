@@ -1,1 +1,1 @@
-export { DialogHeader, DialogHeaderProps } from './dialog-header'
+export { DialogHeader, DialogHeaderProps } from './dialog-header';

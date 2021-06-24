@@ -1,29 +1,29 @@
 .icon-button {
-    border-radius: 50%;
-    height: 32px;
-    width: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--colors-black);
-    margin: 0;
-    outline: 0;
-    border: 0;
-    background-color: transparent;
-    cursor: pointer;
+  align-items: center;
+  background-color: transparent;
+  border: 0;
+  border-radius: 50%;
+  color: var(--colors-black);
+  cursor: pointer;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  margin: 0;
+  outline: 0;
+  width: 32px;
 
-    &_primary {
-        background-color: var(--colors-blue);
-        color: var(--colors-white);
-    }
+  &_primary {
+    background-color: var(--colors-blue);
+    color: var(--colors-white);
+  }
 
-    &_secondary {
-        background-color: var(--colors-blue-2);
-        color: var(--colors-white);
-    }
+  &_secondary {
+    background-color: var(--colors-blue-2);
+    color: var(--colors-white);
+  }
 
-    &_disabled {
-        background-color: var(--colors-grey-2);
-        color: var(--colors-white);
-    }
+  &_disabled {
+    background-color: var(--colors-grey-2);
+    color: var(--colors-white);
+  }
 }

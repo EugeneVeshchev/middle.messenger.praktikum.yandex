@@ -7,4 +7,4 @@ export const iconButtonTemplate = `
         {{{icon}}}
         {{{child}}}
     </button>
-`
+`;

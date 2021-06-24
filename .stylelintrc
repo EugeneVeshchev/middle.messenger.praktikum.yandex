@@ -1,0 +1,15 @@
+{
+  "extends": "stylelint-config-sass-guidelines",
+  "plugins": [
+    "stylelint-order"
+  ],
+  "rules": {
+    "max-nesting-depth": 3,
+    "scss/selector-no-redundant-nesting-selector": null,
+    "selector-class-pattern": null
+  },
+  "ignoreFiles": [
+    "dist/**",
+    "node_modules/**"
+  ]
+}

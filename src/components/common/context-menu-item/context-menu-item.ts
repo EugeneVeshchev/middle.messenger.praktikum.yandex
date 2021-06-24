@@ -1,17 +1,17 @@
-import Block from "../../../utils/Block";
-import compileTemplate from "../../../utils/compileTemplate";
-import {contextMenuItemTemplate} from "./context-menu-item.template";
+import Block from '../../../utils/Block';
+import compileTemplate from '../../../utils/compileTemplate';
+import { contextMenuItemTemplate } from './context-menu-item.template';
 
-import './context-menu-item.scss'
+import './context-menu-item.scss';
 
 export type ContextMenuItemProps = {
-    icon?: string;
-    className?: string;
-    title?: string;
-}
+  icon?: string;
+  className?: string;
+  title?: string;
+};
 
 export class ContextMenuItem extends Block<ContextMenuItemProps> {
-    render() {
-        return compileTemplate(contextMenuItemTemplate, this.props)
-    }
+  render() {
+    return compileTemplate(contextMenuItemTemplate, this.props);
+  }
 }

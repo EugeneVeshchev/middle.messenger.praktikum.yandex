@@ -1,17 +1,17 @@
-import Block from "../../../utils/Block";
-import compileTemplate from "../../../utils/compileTemplate";
-import {buttonTemplate} from "./button.template";
+import Block from '../../../utils/Block';
+import compileTemplate from '../../../utils/compileTemplate';
+import { buttonTemplate } from './button.template';
 
-import './button.scss'
+import './button.scss';
 
 type ButtonProps = {
-    title: string;
-    variant?: 'primary' | 'secondary' | 'transparent'
-    type?: string;
-    className?: string;
-}
+  title: string;
+  variant?: 'primary' | 'secondary' | 'transparent'
+  type?: string;
+  className?: string;
+};
 export default class Button extends Block<ButtonProps> {
-    render() {
-        return compileTemplate(buttonTemplate, this.props)
-    }
+  render() {
+    return compileTemplate(buttonTemplate, this.props);
+  }
 }

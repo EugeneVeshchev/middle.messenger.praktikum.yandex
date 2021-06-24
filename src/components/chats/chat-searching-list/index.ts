@@ -1,1 +1,1 @@
-export { ChatSearchingList, ChatSearchingListProps } from './chat-searching-list'
+export { ChatSearchingList, ChatSearchingListProps } from './chat-searching-list';

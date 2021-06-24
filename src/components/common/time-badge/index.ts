@@ -1,1 +1,1 @@
-export { TimeBadge, TimeBadgeProps } from './time-badge'
+export { TimeBadge, TimeBadgeProps } from './time-badge';

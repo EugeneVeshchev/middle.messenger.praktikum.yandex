@@ -1,28 +1,33 @@
 .heading {
-    color: var(--colors-black);
-    font-weight: normal;
-    margin: 0;
+  color: var(--colors-black);
+  font-weight: normal;
+  margin: 0;
 
-    &_h1 {
-        font-size: var(--typography-h1-font-size);
-    }
-    &_h2 {
-        font-size: var(--typography-h2-font-size);
-    }
-    &_h3 {
-        font-size: var(--typography-h3-font-size);
-    }
-    &_h4 {
-        font-size: var(--typography-h4-font-size);
-    }
-    &_h5 {
-        font-size: var(--typography-h5-font-size);
-    }
-    &_h6 {
-        font-size: var(--typography-h6-font-size);
-    }
+  &_h1 {
+    font-size: var(--typography-h1-font-size);
+  }
 
-    &_center {
-        text-align: center;
-    }
+  &_h2 {
+    font-size: var(--typography-h2-font-size);
+  }
+
+  &_h3 {
+    font-size: var(--typography-h3-font-size);
+  }
+
+  &_h4 {
+    font-size: var(--typography-h4-font-size);
+  }
+
+  &_h5 {
+    font-size: var(--typography-h5-font-size);
+  }
+
+  &_h6 {
+    font-size: var(--typography-h6-font-size);
+  }
+
+  &_center {
+    text-align: center;
+  }
 }

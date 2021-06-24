@@ -1,174 +1,159 @@
-import {EventModel} from "./Block";
+import { EventModel } from './Block';
+import { DEFAULT_FORM_FIELD_SELECTOR, DEFAULT_FORM_SELECTOR } from '../constants';
 
+type Selectors = {
+  prefix?: string;
+  form?: string;
+  field?: string;
+};
+type InitialState<TValues> = {
+  values?: TValues;
+  errors?: Errors<TValues>;
+};
+type Validators<TValues> = {
+  [K in keyof TValues]?: (value: TValues[K], values: TValues) => string | undefined
+};
 type Errors<TValues> = { [K in keyof TValues]?: string };
 type Options<TValues> = {
-    initialValues?: TValues;
-    initialErrors?: Errors<TValues>;
-    validating?: { [K in keyof TValues]?: (value: TValues[K], values: TValues) => string | undefined };
-    onSubmit: (values: TValues) => void;
-    onValidate?: (errors: Errors<TValues>) => void;
-    selector?: string;
+  selectors?: Selectors;
+  initialState?: InitialState<TValues>;
+  validators: Validators<TValues>;
+
+  onSubmit: (values: TValues, event: Event) => void;
+  onValidate?: (errors: Errors<TValues>) => void;
 };
 
 export class FormHelper<TValues> {
-    static SELECTORS = {
-        form: '.form',
-        input: '.field .field__input'
-    }
+  private static _joinSelector(prefix?: string, selector?: string) {
+    return [prefix, selector].filter(Boolean).join(' ');
+  }
 
-    _meta: Pick<Options<TValues>, 'initialValues' | 'initialErrors' | 'selector'>;
-    _errors: Errors<TValues>;
-    _values: TValues;
-    _validating: NonNullable<Options<TValues>['validating']>;
-    props: Pick<Options<TValues>, 'onSubmit' | 'onValidate'>
+  private readonly _initialState: Options<TValues>['initialState'];
 
-    constructor(
-        {
-            initialErrors = {} as Errors<TValues>,
-            initialValues = {} as TValues,
-            selector = '',
-            onValidate,
-            onSubmit,
-            validating = {} as NonNullable<Options<TValues>['validating']>
-        }: Options<TValues>
-    ) {
-        this._meta = {
-            initialErrors,
-            initialValues,
-            selector,
-        }
-        this._errors = initialErrors;
-        this._values = initialValues;
-        this._validating = validating;
+  private readonly _validators: Options<TValues>['validators'] = {};
 
-        this.props = {
-            onValidate,
-            onSubmit
-        }
-    }
+  private readonly _onSubmit: Options<TValues>['onSubmit'];
 
-    get errors(): Errors<TValues> {
-        return this._errors;
-    }
-    get values(): TValues {
-        return this._values;
-    }
-    get events(): EventModel[] {
-        const {selector} = this._meta;
-        const formSelector = `${selector} ${FormHelper.SELECTORS.form}`;
-        const fieldSelector = `${selector} ${FormHelper.SELECTORS.form} ${FormHelper.SELECTORS.input}`;
+  private readonly _onValidate: Options<TValues>['onValidate'];
 
-        return [
-            {
-                type: 'submit',
-                callback: this._handleSubmit,
-                selectors: formSelector
-            },
-            {
-                type: 'focus',
-                callback: this._handleFocus,
-                selectors: fieldSelector
-            },
-            {
-                type: 'blur',
-                callback: this._handleBlur,
-                selectors: fieldSelector
-            },
-            {
-                type: 'change',
-                callback: this._handleChange,
-                selectors: fieldSelector
-            },
-        ]
-    }
+  private readonly _values: TValues;
 
-    _validateValues = (values: Partial<TValues>) => {
-        const errors: Errors<TValues> = {};
-        Object.entries(values as TValues).forEach(([key, value]) => {
-            const validate = this._validating[key as keyof TValues];
-            if (validate) {
-                const error = validate(value, this._values);
-                if (error) {
-                    errors[key as keyof TValues] = error
-                }
-            }
-        })
-        return errors
-    }
+  get values() {
+    return this._values;
+  }
 
-    _getElementNameAndValueByEvent = (event: Event) => {
-        const target = event.target as HTMLInputElement;
-        const name = target.name as keyof TValues;
-        const value = target.value as unknown as TValues[keyof TValues];
-        return {
-            name,
-            value,
-        }
-    }
+  private _errors: Errors<TValues>;
 
-    _handleChange = (event: Event) => {
-        const {name, value} = this._getElementNameAndValueByEvent(event)
-        if (!name) {
-            return
-        }
-        this._values[name] = value;
-    }
+  get errors() {
+    return this._errors;
+  }
 
-    _handleFocus = (event: Event) => {
-        const {name} = this._getElementNameAndValueByEvent(event)
-        const {onValidate} = this.props;
-        if (!name || !onValidate) {
-            return
-        }
-        onValidate({
-            ...this._errors,
-            [name]: undefined
-        })
-    }
+  private _events: EventModel[] = [];
 
-    _handleBlur = (event: Event) => {
-        const {name, value} = this._getElementNameAndValueByEvent(event)
-        const {onValidate} = this.props;
-        if (!name || !onValidate) {
-            return
-        }
-        onValidate({
-            ...this._errors,
-            ...this._validateValues(
-                {[name]: value} as Partial<TValues>
-            )
-        })
-    }
+  get events() {
+    return this._events;
+  }
 
-    _handleSubmit = (event: Event) => {
-        event.preventDefault();
-        const target = event.target as HTMLFormElement;
-        const formData = new FormData(target)
-        const values: TValues = {} as TValues;
-        formData.forEach((value, key) => {
-            values[key as keyof TValues] = value as unknown as TValues[keyof TValues]
-        })
+  constructor(
+    {
+      initialState = {},
+      selectors = {},
+      validators,
+      onSubmit,
+      onValidate,
+    }: Options<TValues>,
+  ) {
+    this._initialState = initialState;
 
-        const errors = this._validateValues(values);
+    const { values = {} as TValues, errors = {} } = this._initialState;
+    this._errors = errors;
+    this._values = values;
 
-        const isFormNotValid = Object.keys(errors).length;
-        const {onValidate, onSubmit} = this.props;
-        if (isFormNotValid) {
-            onValidate && onValidate(errors);
-        } else {
-            onSubmit(values)
-        }
-    }
-}
+    this._validators = validators;
 
-export type FormHelperData<TValues> = Pick<FormHelper<TValues>, 'events' | 'values' | 'errors'>
-export type FormHelperMeta<TValues> = Pick<FormHelper<TValues>, 'values' | 'errors'>
-export const getFormData = <TValues>(options: Options<TValues>): FormHelperData<TValues> => {
-    const {events, values, errors} = new FormHelper(options)
+    this._onSubmit = onSubmit;
+    this._onValidate = onValidate;
+
+    const {
+      prefix,
+      form: formSelector = DEFAULT_FORM_SELECTOR,
+      field: fieldSelector = DEFAULT_FORM_FIELD_SELECTOR,
+    } = selectors;
+    const form = FormHelper._joinSelector(prefix, formSelector);
+    const field = FormHelper._joinSelector(form, fieldSelector);
+
+    this._events.push({
+      type: 'submit',
+      callback: this._handleSubmit,
+      selectors: form,
+    }, {
+      type: 'blur',
+      callback: this._handleBlur,
+      selectors: field,
+    }, {
+      type: 'change',
+      callback: this._handleChange,
+      selectors: field,
+    });
+  }
+
+  private _getElementNameAndValueByEvent = (event: Event) => {
+    const target = event.target as HTMLInputElement;
+    const name = target.name as keyof TValues;
+    const value = target.value as unknown as TValues[keyof TValues];
     return {
-        events,
-        values,
-        errors
+      name,
+      value,
+    };
+  };
+
+  private _validateValues = (values: Partial<TValues>) => {
+    const errors: Errors<TValues> = {};
+    Object.entries(values as TValues).forEach(([key, value]) => {
+      const validator = this._validators[key as keyof TValues];
+      if (validator) {
+        const error = validator(value, this._values);
+        if (error) {
+          errors[key as keyof TValues] = error;
+        }
+      }
+    });
+    return errors;
+  };
+
+  private _handleSubmit = (event: Event) => {
+    event.preventDefault();
+    this._errors = this._validateValues(this._values);
+
+    const isFormNotValid = !!Object.keys(this._errors).length;
+
+    if (isFormNotValid) {
+      this._onValidate?.(this._errors);
+    } else {
+      this._onSubmit(this._values, event);
     }
+  };
+
+  private _handleBlur = (event: Event) => {
+    const { name, value } = this._getElementNameAndValueByEvent(event);
+    if (!name) {
+      return;
+    }
+    this._errors = {
+      ...this._errors,
+      [name]: this._validateValues({ [name]: value } as Partial<TValues>)[name],
+    };
+
+    this._onValidate?.(this._errors);
+  };
+
+  private _handleChange = (event: Event) => {
+    const { name, value } = this._getElementNameAndValueByEvent(event);
+    if (!name) {
+      return;
+    }
+    this._values[name] = value;
+  };
 }
-export const emailRegExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+export type FormHelperData<TValues> = Pick<FormHelper<TValues>, 'values' | 'errors'>;

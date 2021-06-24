@@ -2,7 +2,7 @@
 export const signUpTemplate = `
     <main class="page sign-up-page">
     <form class="form sign-up-page__form">
-        <div class="content_column-4 form__column form__column_center">
+        <div class="content-column-4 form__column form__column_center">
             {{{logotype}}}
         </div>
         
@@ -10,11 +10,11 @@ export const signUpTemplate = `
 
         {{{fields}}}
         
-        <div class="content_column-4 form__column">
+        <div class="content-column-4 form__column">
             {{#each actions}}
                 {{{this}}}
             {{/each}}
         </div>
     </form>
 </main>
-`
+`;

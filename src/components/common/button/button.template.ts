@@ -6,4 +6,4 @@ export const buttonTemplate = `
     >
         {{{title}}}
     </button>
-`
+`;

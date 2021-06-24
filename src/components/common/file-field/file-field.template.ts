@@ -15,4 +15,4 @@ export const fileFieldTemplate = `
                 {{#if accept}}accept="{{accept}}"{{else}}accept="image/*"{{/if}}
         >
     </div>
-`
+`;

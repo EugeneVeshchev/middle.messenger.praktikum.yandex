@@ -1,1 +1,1 @@
-export { ChatNewMessage } from './chat-new-message'
+export { ChatNewMessage } from './chat-new-message';

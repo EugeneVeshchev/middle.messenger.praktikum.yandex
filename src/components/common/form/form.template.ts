@@ -5,4 +5,4 @@ export const formTemplate = `
             {{{this}}}
         {{/each}}
     </form>
-`
+`;

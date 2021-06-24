@@ -4,4 +4,4 @@ export const chatsTemplate = `
         {{{chatSideBar}}}
         {{{chat}}}
     </div>
-`
+`;

@@ -1,153 +1,155 @@
-import EventBus from "./EventBus";
+import EventBus from './EventBus';
 
 interface Meta<TProps> {
-    tagName: string;
-    props: TProps
+  tagName: string;
+  props: TProps;
 }
 
 export type EventModel = {
-    type: keyof HTMLElementEventMap,
-    callback: Parameters<Document['addEventListener']>[1]
-    selectors: string;
-}
+  type: keyof HTMLElementEventMap,
+  callback: Parameters<Document['addEventListener']>[1]
+  selectors: string;
+};
 type DefaultProps = {
-    events?: EventModel[];
-}
+  events?: EventModel[];
+};
 
-export default class Block<TInitProps extends object = {}, TProps extends (TInitProps & DefaultProps) = TInitProps & DefaultProps> {
-    static EVENTS = {
-        INIT: "init",
-        FLOW_CDM: "flow:component-did-mount",
-        FLOW_CDU: "flow:component-did-update",
-        FLOW_RENDER: "flow:render"
+export default class Block<
+  TInitProps extends object = {},
+  TProps extends (TInitProps & DefaultProps) = TInitProps & DefaultProps,
+> {
+  static EVENTS = {
+    INIT: 'init',
+    FLOW_CDM: 'flow:component-did-mount',
+    FLOW_CDU: 'flow:component-did-update',
+    FLOW_RENDER: 'flow:render',
+  };
+
+  eventBus: () => EventBus;
+
+  props: TProps;
+
+  _meta: Meta<TProps>;
+
+  constructor(props: TProps = {} as TProps, tagName = 'div') {
+    const eventBus = new EventBus();
+    this._meta = {
+      tagName,
+      props,
     };
 
-    eventBus: () => EventBus;
-    props: TProps;
-    _element: HTMLElement = HTMLElement.prototype;
-    _meta: Meta<TProps>;
+    this.props = this._makePropsProxy(props);
 
-    constructor(props: TProps = {} as TProps, tagName = "div") {
-        const eventBus = new EventBus();
-        this._meta = {
-            tagName,
-            props
-        };
+    this.eventBus = () => eventBus;
 
-        this.props = this._makePropsProxy(props);
+    this._registerEvents(eventBus);
+    eventBus.emit(Block.EVENTS.INIT);
+  }
 
-        this.eventBus = () => eventBus;
+  _element: HTMLElement = HTMLElement.prototype;
 
-        this._registerEvents(eventBus);
-        eventBus.emit(Block.EVENTS.INIT);
+  get element() {
+    return this._element;
+  }
+
+  _registerEvents(eventBus: EventBus) {
+    eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
+    eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
+    eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+    eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
+  }
+
+  _createResources() {
+    const { tagName } = this._meta;
+    this._element = this._createDocumentElement(tagName);
+  }
+
+  init() {
+    this._createResources();
+    this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+  }
+
+  _componentDidMount() {
+    this.componentDidMount(this.props);
+    this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  componentDidMount(_props: TProps): void {
+  }
+
+  _componentDidUpdate(oldProps: TProps, newProps: TProps) {
+    const response = this.componentDidUpdate(oldProps, newProps);
+    if (response) {
+      this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+    }
+  }
+
+  // т.к. в обязательных условиях стоит флаг , но функция дефолтная нужна
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  componentDidUpdate(_oldProps: TProps, _newProps: TProps) {
+    return true;
+  }
+
+  setProps = (nextProps: Partial<TProps>) => {
+    if (!nextProps) {
+      return;
     }
 
-    _registerEvents(eventBus: EventBus) {
-        eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
-    }
+    Object.assign(this.props, nextProps);
+  };
 
-    _createResources() {
-        const {tagName} = this._meta;
-        this._element = this._createDocumentElement(tagName);
-    }
+  _removeEvents() {
+    const { events = [] } = this.props;
+    events.forEach(({ type, callback, selectors }) => {
+      const elements = this._element.querySelectorAll(selectors);
+      elements.forEach((element) => element.removeEventListener(type, callback));
+    });
+  }
 
-    init() {
-        this._createResources();
-        this.eventBus().emit(Block.EVENTS.FLOW_CDM);
-    }
+  _addEvents() {
+    const { events = [] } = this.props;
+    events.forEach(({ type, callback, selectors }) => {
+      const elements = this._element.querySelectorAll(selectors);
+      elements.forEach((element) => element.addEventListener(type, callback));
+    });
+  }
 
-    _componentDidMount() {
-        this.componentDidMount(this.props);
-        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
-    }
+  _render() {
+    const block = this.render();
 
-    // Может переопределять пользователь, необязательно трогать
-    // @ts-ignore т.к. в обязательных условиях стоит флаг noUnusedLocals, но функция дефолтная нужна
-    componentDidMount(props: TProps): void {
-    }
+    this._removeEvents();
 
-    _componentDidUpdate(oldProps: TProps, newProps: TProps) {
-        const response = this.componentDidUpdate(oldProps, newProps);
-        if (response) {
-            this.eventBus().emit(Block.EVENTS.FLOW_RENDER)
-        }
-    }
+    this._element.innerHTML = block;
 
-    // Может переопределять пользователь, необязательно трогать
-    // @ts-ignore т.к. в обязательных условиях стоит флаг noUnusedLocals, но функция дефолтная нужна
-    componentDidUpdate(oldProps: TProps, newProps: TProps) {
+    this._addEvents();
+  }
+
+  render() {
+    return '';
+  }
+
+  getContent() {
+    return this.element;
+  }
+
+  _makePropsProxy(props: TProps) {
+    const self = this;
+
+    return new Proxy<TProps>(props, {
+      set(target: any, name, value) {
+        // eslint-disable-next-line no-param-reassign
+        target[name] = value;
+        self.eventBus().emit(Block.EVENTS.FLOW_CDU, self.props, target);
         return true;
-    }
+      },
+      deleteProperty() {
+        throw new Error('нет доступа');
+      },
+    });
+  }
 
-    setProps = (nextProps: Partial<TProps>) => {
-        if (!nextProps) {
-            return;
-        }
-
-        Object.assign(this.props, nextProps);
-    };
-
-    get element() {
-        return this._element;
-    }
-
-    _removeEvents() {
-        const {events = []} = this.props;
-        events.forEach(({type, callback, selectors}) => {
-            const elements = this._element.querySelectorAll(selectors);
-            elements.forEach(element => element.removeEventListener(type, callback));
-        });
-    }
-
-    _addEvents() {
-        const {events = []} = this.props;
-        events.forEach(({type, callback, selectors}) => {
-            const elements = this._element.querySelectorAll(selectors);
-            elements.forEach(element => element.addEventListener(type, callback));
-        });
-    }
-
-    _render() {
-        const block = this.render();
-
-        this._removeEvents();
-
-        this._element.innerHTML = block;
-
-        this._addEvents();
-    }
-
-    // Может переопределять пользователь, необязательно трогать
-    render() {
-        return ''
-    }
-
-    getContent() {
-        return this.element;
-    }
-
-    _makePropsProxy(props: TProps) {
-        // Можно и так передать this
-        // Такой способ больше не применяется с приходом ES6+
-        const self = this;
-
-        return new Proxy<TProps>(props, {
-            set(target: any, name, value) {
-                target[name] = value;
-                self.eventBus().emit(Block.EVENTS.FLOW_CDU, self.props, target)
-                return true
-            },
-            deleteProperty() {
-                throw new Error('нет доступа')
-            }
-        });
-    }
-
-    _createDocumentElement(tagName: string) {
-        // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
-        return document.createElement(tagName);
-    }
+  _createDocumentElement(tagName: string) {
+    return document.createElement(tagName);
+  }
 }

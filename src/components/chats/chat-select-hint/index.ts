@@ -1,1 +1,1 @@
-export { ChatSelectHint } from './chat-select-hint'
+export { ChatSelectHint } from './chat-select-hint';

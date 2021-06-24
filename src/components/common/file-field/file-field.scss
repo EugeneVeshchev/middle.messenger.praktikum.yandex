@@ -1,17 +1,17 @@
 .file-field {
-    display: flex;
+  align-items: center;
+  color: var(--colors-blue);
+  display: flex;
+  font-size: var(--typography-h3-font-size);
+  justify-content: center;
+
+  &__input {
+    display: none;
+  }
+
+  &__label {
     align-items: center;
-    justify-content: center;
-    color: var(--colors-blue);
-    font-size: var(--typography-h3-font-size);
-
-    &__input {
-        display: none;
-    }
-
-    &__label {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-    }
+    cursor: pointer;
+    display: flex;
+  }
 }

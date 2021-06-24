@@ -1,1 +1,1 @@
-export { ChatPreviewList, ChatPreviewListProps } from './chat-preview-list'
+export { ChatPreviewList, ChatPreviewListProps } from './chat-preview-list';

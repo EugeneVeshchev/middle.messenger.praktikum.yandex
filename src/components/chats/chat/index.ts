@@ -1,1 +1,1 @@
-export { Chat, ChatProps } from './chat'
+export { Chat, ChatProps } from './chat';

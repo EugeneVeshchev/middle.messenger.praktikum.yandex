@@ -1,1 +1,1 @@
-export { ChatMessageList, ChatMessageListProps } from './chat-message-list'
+export { ChatMessageList, ChatMessageListProps } from './chat-message-list';

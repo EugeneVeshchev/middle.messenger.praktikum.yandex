@@ -1,7 +1,7 @@
 // language=Handlebars
 export const chatSideBarTemplate = `
-    <aside class="content_column-4 chat-side-bar">
-        <nav class="content_row-4 chat-side-bar__header">
+    <aside class="content-column-4 chat-side-bar">
+        <nav class="content-row-4 chat-side-bar__header">
             {{{userAvatar}}}
             <form class="form chat-side-bar__search-form">
                 {{{searchField}}}
@@ -20,4 +20,4 @@ export const chatSideBarTemplate = `
             {{/if}}
         </div>
     </aside>
-`
+`;

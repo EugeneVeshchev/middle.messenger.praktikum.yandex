@@ -1,1 +1,1 @@
-export { DialogActions, DialogActionsProps } from './dialog-actions'
+export { DialogActions, DialogActionsProps } from './dialog-actions';

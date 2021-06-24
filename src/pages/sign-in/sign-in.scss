@@ -1,24 +1,26 @@
 .sign-in-page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 
-    &__form {
-        min-width: 320px;
-        border-radius: var(--gap-4);
-        padding: var(--gap-16);
-        background-color: var(--colors-white);
-        box-shadow: var(--card-box-shadow);
+  &__form {
+    background-color: var(--colors-white);
+    border-radius: var(--gap-4);
+    box-shadow: var(--card-box-shadow);
+    min-width: 320px;
+    padding: var(--gap-16);
 
-        & > * {
-            margin: var(--gap-24) 0;
-        }
-        & > *:first-child {
-            margin-top: 0;
-        }
-        & > *:last-child {
-            margin-bottom: 0;
-        }
+    & > * {
+      margin: var(--gap-24) 0;
     }
+
+    & > *:first-child {
+      margin-top: 0;
+    }
+
+    & > *:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 

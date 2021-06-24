@@ -1,1 +1,1 @@
-export { ChatSideBar, ChatSideBarProps } from './chat-side-bar'
+export { ChatSideBar, ChatSideBarProps } from './chat-side-bar';

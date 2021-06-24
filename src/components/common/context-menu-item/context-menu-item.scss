@@ -1,23 +1,23 @@
 .context-menu-item {
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: var(--gap-8);
-    white-space: nowrap;
+  align-items: center;
+  display: flex;
+  margin: 0;
+  padding: var(--gap-8);
+  white-space: nowrap;
 
-    &:hover {
-        background-color: var(--colors-blue-3);
-    }
+  &:hover {
+    background-color: var(--colors-blue-3);
+  }
 
-    &__icon {
-        font-size: var(--typography-h2-font-size);
-        color: var(--colors-blue);
-        margin-right: var(--gap-4);
-    }
+  &__icon {
+    color: var(--colors-blue);
+    font-size: var(--typography-h2-font-size);
+    margin-right: var(--gap-4);
+  }
 
-    &__text {
-        color: var(--colors-black);
-        font-size: var(--typography-h4-font-size);
-    }
+  &__text {
+    color: var(--colors-black);
+    font-size: var(--typography-h4-font-size);
+  }
 
 }

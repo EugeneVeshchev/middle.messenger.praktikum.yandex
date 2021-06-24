@@ -1,1 +1,1 @@
-export { ChatHeader, ChatHeaderProps } from './chat-header'
+export { ChatHeader, ChatHeaderProps } from './chat-header';

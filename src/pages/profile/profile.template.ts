@@ -4,4 +4,4 @@ export const profileTemplate = `
         {{{profileHeader}}}
         {{{profileInfo}}}
     </div>
-`
+`;

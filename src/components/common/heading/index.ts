@@ -1,1 +1,1 @@
-export { default, HeadingProps } from './heading'
+export { default, HeadingProps } from './heading';

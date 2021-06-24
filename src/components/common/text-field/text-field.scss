@@ -1,52 +1,61 @@
 .field {
-    display: inline-flex;
-    flex-direction: column;
+  display: inline-flex;
+  flex-direction: column;
 
-    &__input {
-        outline: 0;
-        border-radius: var(--gap-4);
-        padding: var(--gap-8);
-        font-size: var(--typography-h3-font-size);
-        width: 100%;
-        box-sizing: border-box;
-        color: var(--colors-black);
-    }
-    &_primary &__input {
-        border: 1px solid var(--colors-blue);
-    }
-    &_error &__input {
-        border: 1px solid var(--colors-red);
-    }
-    &_disabled &__input {
-        color: var(--colors-grey-3);
-        border: 1px solid var(--colors-grey-3);
-    }
+  &__input {
+    border-radius: var(--gap-4);
+    box-sizing: border-box;
+    color: var(--colors-black);
+    font-size: var(--typography-h3-font-size);
+    outline: 0;
+    padding: var(--gap-8);
+    width: 100%;
+  }
 
-    &__label {
-        display: block;
-        font-size: var(--typography-description-font-size);
-    }
-    &_primary &__label {
-        color: var(--colors-blue);
-    }
-    &_error &__label {
-        color: var(--colors-red);
-    }
-    &_disabled &__label {
-        color: var(--colors-grey-3);
-    }
+  &_primary &__input {
+    border: 1px solid var(--colors-blue);
+  }
 
-    &__description {
-        margin: 0;
-        font-size: var(--typography-description-font-size);
-    }
-    &_primary &__description {
-        color: var(--colors-blue);
-    }
-    &_error &__description {
-        color: var(--colors-red);
-    }
-    &_disabled &__description {
-        color: var(--colors-grey-3);
-    }
+  &_error &__input {
+    border: 1px solid var(--colors-red);
+  }
+
+  &_disabled &__input {
+    border: 1px solid var(--colors-grey-3);
+    color: var(--colors-grey-3);
+  }
+
+  &__label {
+    display: block;
+    font-size: var(--typography-description-font-size);
+  }
+
+  &_primary &__label {
+    color: var(--colors-blue);
+  }
+
+  &_error &__label {
+    color: var(--colors-red);
+  }
+
+  &_disabled &__label {
+    color: var(--colors-grey-3);
+  }
+
+  &__description {
+    font-size: var(--typography-description-font-size);
+    margin: 0;
+  }
+
+  &_primary &__description {
+    color: var(--colors-blue);
+  }
+
+  &_error &__description {
+    color: var(--colors-red);
+  }
+
+  &_disabled &__description {
+    color: var(--colors-grey-3);
+  }
 }

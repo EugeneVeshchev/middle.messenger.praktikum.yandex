@@ -13,4 +13,4 @@ export const chatMessageTemplate = `
             </div>
         </div>
     </div>
-`
+`;

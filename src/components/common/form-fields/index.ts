@@ -1,1 +1,1 @@
-export { FormFields, FormFieldsProps } from './form-fields'
+export { FormFields, FormFieldsProps } from './form-fields';

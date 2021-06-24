@@ -4,4 +4,4 @@ export const profileHeaderTemplate = `
         {{{chatsLink}}}
         {{{signOutLink}}}
     </nav>
-`
+`;

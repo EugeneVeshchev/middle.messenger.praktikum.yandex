@@ -1,10 +1,10 @@
 .chat-select-hint {
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: center;
 
-    &__text {
-        color: var(--colors-grey-3)
-    }
+  &__text {
+    color: var(--colors-grey-3);
+  }
 }

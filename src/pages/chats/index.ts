@@ -1,7 +1,7 @@
-import render from "../../utils/renderDom";
-import {ChatsPage} from "./chats";
+import render from '../../utils/renderDom';
+import { ChatsPage } from './chats';
 
 render(
-    '#app',
-    new ChatsPage()
-)
+  '#app',
+  new ChatsPage(),
+);

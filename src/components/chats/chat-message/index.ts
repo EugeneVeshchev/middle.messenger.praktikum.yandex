@@ -1,1 +1,1 @@
-export { ChatMessage, ChatMessageProps } from './chat-message'
+export { ChatMessage, ChatMessageProps } from './chat-message';

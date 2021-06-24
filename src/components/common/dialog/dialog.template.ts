@@ -5,4 +5,4 @@ export const dialogTemplate = `
             {{{child}}}
         </div>
     </div>
-`
+`;

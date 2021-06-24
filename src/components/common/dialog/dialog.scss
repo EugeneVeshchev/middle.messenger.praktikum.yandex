@@ -1,16 +1,16 @@
 .dialog {
-    padding: var(--gap-16);
-    display: flex;
-    flex-direction: column;
-    visibility: hidden;
-    opacity: 0;
-    box-shadow: var(--card-box-shadow);
-    background-color: var(--colors-white);
-    border-radius: var(--gap-4);
+  background-color: var(--colors-white);
+  border-radius: var(--gap-4);
+  box-shadow: var(--card-box-shadow);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  padding: var(--gap-16);
+  visibility: hidden;
 
-    &_active {
-        transition: opacity .5s;
-        opacity: 1;
-        visibility: visible;
-    }
+  &_active {
+    opacity: 1;
+    transition: opacity 0.5s;
+    visibility: visible;
+  }
 }

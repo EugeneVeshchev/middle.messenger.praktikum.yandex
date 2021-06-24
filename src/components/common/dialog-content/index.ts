@@ -1,1 +1,1 @@
-export { DialogContent, DialogContentProps } from './dialog-content'
+export { DialogContent, DialogContentProps } from './dialog-content';

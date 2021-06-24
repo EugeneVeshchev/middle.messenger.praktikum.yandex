@@ -1,10 +1,10 @@
 // language=Handlebars
 export const chatNewMessageTemplate = `
-    <form class="content_row-4 chat-new-message">
+    <form class="content-row-4 chat-new-message">
         {{{attaching}}}
         
         {{{field}}}
         
         {{{action}}}
     </form>
-`
+`;

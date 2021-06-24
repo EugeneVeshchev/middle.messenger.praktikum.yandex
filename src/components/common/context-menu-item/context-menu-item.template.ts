@@ -4,4 +4,4 @@ export const contextMenuItemTemplate = `
         {{{icon}}}
         <span class="context-menu-item__text">{{{title}}}</span>
     </li>
-`
+`;

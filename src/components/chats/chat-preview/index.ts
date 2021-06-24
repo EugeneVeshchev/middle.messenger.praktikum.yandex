@@ -1,1 +1,1 @@
-export {} from './chat-preview'
+export {} from './chat-preview';

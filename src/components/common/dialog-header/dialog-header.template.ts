@@ -4,4 +4,4 @@ export const dialogHeaderTemplate = `
         {{{heading}}}
         {{{closeButton}}}
     </div>
-`
+`;

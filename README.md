@@ -9,8 +9,8 @@
 
 ## Прогресс
 <a name="progress"></a>
-- [x] Спринт 1
-- [ ] Спринт 2 Добавлен шаблонизатор (Handlebars)
+- [x] Спринт 1 Добавлено: Handlebars, Parcel
+- [ ] Спринт 2 Добавлено: TypeScript, ESLint, StyleLint
 - [ ] Спринт 3
 - [ ] Спринт 4
 

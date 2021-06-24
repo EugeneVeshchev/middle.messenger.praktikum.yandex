@@ -1,23 +1,23 @@
 .badge {
-    height: 20px;
-    width: 20px;
-    color: var(--colors-white);
-    font-size: var(--typography-description-font-size);
-    border-radius: 50%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  align-items: center;
+  border-radius: 50%;
+  color: var(--colors-white);
+  display: flex;
+  font-size: var(--typography-description-font-size);
+  height: 20px;
+  justify-content: center;
+  overflow: hidden;
+  width: 20px;
 
-    &_primary {
-        background-color: var(--colors-blue);
-    }
+  &_primary {
+    background-color: var(--colors-blue);
+  }
 
-    &_secondary {
-        background-color: var(--colors-blue-2);
-    }
+  &_secondary {
+    background-color: var(--colors-blue-2);
+  }
 
-    &_error {
-        background-color: var(--colors-red);
-    }
+  &_error {
+    background-color: var(--colors-red);
+  }
 }

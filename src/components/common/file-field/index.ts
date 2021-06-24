@@ -1,1 +1,1 @@
-export { FileField, FileFieldProps } from './file-field'
+export { FileField, FileFieldProps } from './file-field';

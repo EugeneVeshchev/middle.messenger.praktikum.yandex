@@ -1,8 +1,8 @@
 .profile-page {
-    display: flex;
-    flex-direction: column;
-    max-width: 500px;
-    margin: 0 auto;
-    padding: var(--gap-8);
-    box-sizing: border-box;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 500px;
+  padding: var(--gap-8);
 }
