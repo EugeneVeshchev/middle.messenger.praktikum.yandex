@@ -1,4 +1,4 @@
-import Block from '../../../utils/Block';
+import Block from '../../../modules/block/Block';
 import compileTemplate from '../../../utils/compileTemplate';
 import { iconButtonTemplate } from './icon-button.template';
 

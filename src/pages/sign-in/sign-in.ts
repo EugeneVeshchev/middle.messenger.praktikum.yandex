@@ -1,14 +1,16 @@
-import Block from '../../utils/Block';
+import Block from '../../modules/block/Block';
 import { FormHelper, FormHelperData } from '../../utils/FormHelper';
 import Logotype from '../../components/common/logotype';
-import Heading from '../../components/common/heading';
+import {Heading} from '../../components/common/heading';
 import { FormFields } from '../../components/common/form-fields';
 import Button from '../../components/common/button';
-import Link from '../../components/common/link';
+import {Link} from '../../components/common/link';
 import compileTemplate from '../../utils/compileTemplate';
 import { signInTemplate } from './sign-in.template';
 
 import './sign-in.scss';
+import { navigateTo } from '../../utils/navigateTo';
+import { connect } from '../../store';
 
 type SignInModel = {
   login?: string;
@@ -16,8 +18,8 @@ type SignInModel = {
 };
 type SignInProps = FormHelperData<SignInModel>;
 
-export class SignIn extends Block<SignInProps> {
-  constructor() {
+export class SignInC extends Block<SignInProps> {
+  constructor(props: any) {
     const { values, errors, events } = new FormHelper({
       initialState: {
         values: {
@@ -48,7 +50,24 @@ export class SignIn extends Block<SignInProps> {
       onSubmit: console.log,
     });
 
-    super({ values, errors, events });
+    super({
+      values,
+      errors,
+      events: [
+        {
+          selectors: '.sign-up-link',
+          type: 'click',
+          callback: navigateTo('/sign-up'),
+        },
+        {
+          selectors: '.demo-link',
+          type: 'click',
+          callback: navigateTo('/chats'),
+        },
+        ...events,
+      ],
+      ...props,
+    });
   }
 
   get logotype() {
@@ -94,11 +113,13 @@ export class SignIn extends Block<SignInProps> {
       }).render(),
       new Link({
         href: '/sign-up',
+        className: 'sign-up-link',
         title: 'Нет аккаунта?',
         type: 'button',
       }).render(),
       new Link({
         href: '/chats',
+        className: 'demo-link',
         title: 'Демо версия',
         type: 'button',
       }).render(),
@@ -110,6 +131,7 @@ export class SignIn extends Block<SignInProps> {
       actions, fields, heading, logotype,
     } = this;
     return compileTemplate(signInTemplate, {
+      num: this.props.num,
       actions,
       fields,
       heading,
@@ -117,3 +139,5 @@ export class SignIn extends Block<SignInProps> {
     });
   }
 }
+
+export const SignIn = connect((store) => ({ num: store.test }))(SignInC);

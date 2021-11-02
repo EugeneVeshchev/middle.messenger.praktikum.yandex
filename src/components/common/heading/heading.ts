@@ -1,4 +1,4 @@
-import Block from '../../../utils/Block';
+import Block from '../../../modules/block/Block';
 import compileTemplate from '../../../utils/compileTemplate';
 import { headingTemplate } from './heading.template';
 
@@ -10,7 +10,7 @@ export type HeadingProps = {
   className?: string;
   title?: string | number;
 };
-export default class Heading extends Block<HeadingProps> {
+export class Heading extends Block<HeadingProps> {
   render() {
     return compileTemplate(headingTemplate, this.props);
   }

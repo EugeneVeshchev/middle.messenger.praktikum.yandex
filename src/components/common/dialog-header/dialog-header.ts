@@ -1,9 +1,9 @@
-import Block from '../../../utils/Block';
+import Block from '../../../modules/block/Block';
 import compileTemplate from '../../../utils/compileTemplate';
 import { dialogHeaderTemplate } from './dialog-header.template';
 
 import './dialog-header.scss';
-import Heading from '../heading';
+import { Heading } from '../heading';
 import { Icon } from '../icon';
 import { IconButton } from '../icon-button';
 

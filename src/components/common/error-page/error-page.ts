@@ -1,10 +1,10 @@
-import Block from '../../../utils/Block';
+import Block from '../../../modules/block/Block';
 import compileTemplate from '../../../utils/compileTemplate';
 import { errorPageTemplate } from './error-page.template';
 
 import './error-page.scss';
-import Heading from '../heading';
-import Link from '../link';
+import {Heading} from '../heading';
+import {Link} from '../link';
 
 interface ErrorPageProps {
   className?: string;

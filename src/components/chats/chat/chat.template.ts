@@ -1,10 +1,17 @@
 // language=Handlebars
 export const chatTemplate = `
     <section class="content-column-4 chat">
-        {{{chatHeader}}}
+        {{
+            component (ChatHeader)
+            name=name
+            avatar=avatar
+        }}
         <hr class="divider"/>
-        {{{chatMessagesList}}}
+        {{
+            component (ChatMessageList)
+            messages=messages
+        }}
         <hr class="divider"/>
-        {{{chatSendMessage}}}
+        {{component (ChatNewMessage)}}
     </section>
 `;

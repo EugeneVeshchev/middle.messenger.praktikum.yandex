@@ -4,3 +4,7 @@ declare module 'Handlebars' {
   const Handlebars: Handlebars;
   export default Handlebars;
 }
+
+export type PlainObject<T = unknown> = {
+  [k in string]: T;
+};

@@ -1,4 +1,4 @@
-import queryStringify from './queryStringify';
+import queryStringify from '../../utils/queryStringify';
 
 export enum METHODS {
   GET = 'GET',
@@ -18,7 +18,15 @@ type Request = <TData extends object | BodyInit = Document | BodyInit>(
   options?: HTTPTransportRequestOptions<TData>
 ) => Promise<XMLHttpRequest>;
 
-export default class HttpTransport {
+export class HttpTransport {
+  static HOST = 'https://ya-praktikum.tech/';
+
+  prefix = '';
+
+  constructor(prefix: string = '') {
+    this.prefix = prefix;
+  }
+
   get: Request = (url, options = {}) => this.request(
     `${url}${queryStringify(options.data)}`, { ...options, method: METHODS.GET },
   );
@@ -36,7 +44,7 @@ export default class HttpTransport {
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      xhr.open(method, url);
+      xhr.open(method, [HttpTransport.HOST, this.prefix, url].filter(Boolean).join(''));
 
       xhr.onload = () => {
         resolve(xhr);

@@ -1,4 +1,4 @@
-import Block from '../../../utils/Block';
+import Block from '../../../modules/block/Block';
 import compileTemplate from '../../../utils/compileTemplate';
 import { linkTemplate } from './link.template';
 
@@ -13,7 +13,7 @@ type LinkProps = {
   rightIcon?: string;
   leftIcon?: string;
 };
-export default class Link extends Block<LinkProps> {
+export class Link extends Block<LinkProps> {
   render() {
     return compileTemplate(linkTemplate, this.props);
   }

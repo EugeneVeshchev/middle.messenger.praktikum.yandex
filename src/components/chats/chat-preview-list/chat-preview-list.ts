@@ -1,26 +1,21 @@
-import Block from '../../../utils/Block';
-import { ChatPreview, ChatPreviewProps } from '../chat-preview/chat-preview';
+import Block from '../../../modules/block/Block';
+import { ChatPreviewProps } from '../chat-preview/chat-preview';
 import compileTemplate from '../../../utils/compileTemplate';
 import { chatPreviewListTemplate } from './chat-preview-list.template';
 
 import './chat-preview-list.scss';
 
 export type ChatPreviewListProps = {
-  chats: ChatPreviewProps[]
+  chats: ChatPreviewProps[];
+  onChangeChat: (id: string) => void;
 };
 
 export class ChatPreviewList extends Block<ChatPreviewListProps> {
-  get chats() {
-    const { chats } = this.props;
-    return chats.map((chat) => (
-      new ChatPreview(chat).render()
-    ));
-  }
-
   render() {
-    const { chats } = this;
+    const { chats, onChangeChat } = this.props;
     return compileTemplate(chatPreviewListTemplate, {
       chats,
+      onChangeChat,
     });
   }
 }

@@ -1,4 +1,4 @@
-import { EventModel } from './Block';
+import { EventModel } from '../modules/block/Block';
 import { DEFAULT_FORM_FIELD_SELECTOR, DEFAULT_FORM_SELECTOR } from '../constants';
 
 type Selectors = {

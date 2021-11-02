@@ -1,5 +1,5 @@
 import { FormHelperData } from '../../../utils/FormHelper';
-import Block from '../../../utils/Block';
+import Block from '../../../modules/block/Block';
 import { Avatar } from '../../common/avatar';
 import { Dialog } from '../../common/dialog';
 import { Form } from '../../common/form';

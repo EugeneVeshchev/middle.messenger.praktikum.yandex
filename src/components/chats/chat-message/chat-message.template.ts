@@ -9,7 +9,10 @@ export const chatMessageTemplate = `
                 <img class="chat-message__img" src="{{image}}" alt="message-image"/>
             {{/if}}
             <div class="chat-message__badges">
-                {{{time}}}
+                {{
+                    component (TimeBadge)
+                    value=formattedTime
+                }}
             </div>
         </div>
     </div>

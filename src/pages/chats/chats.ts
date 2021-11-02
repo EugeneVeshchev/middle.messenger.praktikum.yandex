@@ -1,14 +1,14 @@
-import { ChatSideBar, ChatSideBarProps } from '../../components/chats/chat-side-bar';
-import Block from '../../utils/Block';
-import { ChatSelectHint } from '../../components/chats/chat-select-hint';
-import { Chat } from '../../components/chats/chat';
+import { ChatSideBarProps } from '../../components/chats/chat-side-bar';
+import Block from '../../modules/block/Block';
 import compileTemplate from '../../utils/compileTemplate';
 import { chatsTemplate } from './chats.template';
 
 import './chats.scss';
+import { navigateTo } from '../../utils/navigateTo';
 
 const defaultSelectedChatIdx = 3;
-const mockChats = Array.from({ length: 20 }, (_, idx) => ({
+const mockChats = Array.from({ length: 1 }, (_, idx) => ({
+  id: String(idx + 1),
   description: `Достаточно длинное сообщение отображаемое в превью чата ${idx + 1}`,
   name: `Название чата ${idx + 1}`,
   unreadMessages: idx % 10 === 0 ? idx : 0,
@@ -31,41 +31,41 @@ type ChatsPageProps = {
   chats: ChatSideBarProps['chats'],
 };
 
-export class ChatsPage extends Block<ChatsPageProps> {
+export class Chats extends Block<ChatsPageProps> {
   constructor() {
     super({
       activeChatIdx: defaultSelectedChatIdx,
       chats: mockChats,
+      events: [
+        {
+          type: 'click',
+          selectors: '.profile-link',
+          callback: navigateTo('/profile'),
+        },
+      ],
     });
   }
 
-  get chatSideBar() {
-    const { chats } = this.props;
-    return new ChatSideBar({
-      chats,
-    }).render();
-  }
+  handleChangeChat(chatId: string) {
+    const { chats, activeChatIdx = 0 } = this.props;
 
-  get chat() {
-    const { activeChatIdx, chats } = this.props;
-    const activeChat = activeChatIdx !== undefined ? chats[activeChatIdx] : undefined;
-    if (!activeChat) {
-      return new ChatSelectHint().render();
-    }
-
-    const { avatar, name } = activeChat;
-    return new Chat({
-      avatar,
-      name,
-      messages,
-    }).render();
-  }
+    const newChatIdx = chats.findIndex(({id}) => id === chatId)
+    console.log('newChatIdx', newChatIdx);
+    this.setProps({
+      activeChatIdx: newChatIdx > -1 ? newChatIdx : activeChatIdx,
+      chats: chats.map(chat => ({...chat, isActive: chat.id === chatId}))
+    })
+  };
 
   render() {
-    const { chatSideBar, chat } = this;
+    const { activeChatIdx, chats } = this.props;
+    const activeChat = activeChatIdx !== undefined ? chats[activeChatIdx] : undefined;
+
     return compileTemplate(chatsTemplate, {
-      chatSideBar,
-      chat,
+      chats,
+      activeChat,
+      messages,
+      onChangeChat: this.handleChangeChat.bind(this),
     });
   }
 }

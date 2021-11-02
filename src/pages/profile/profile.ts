@@ -1,4 +1,4 @@
-import Block from '../../utils/Block';
+import Block from '../../modules/block/Block';
 import { ProfileInfo, ProfileInfoProps } from '../../components/profile/profile-info';
 import { FormHelper } from '../../utils/FormHelper';
 import { ProfileHeader } from '../../components/profile/profile-header';
@@ -7,6 +7,7 @@ import { profileTemplate } from './profile.template';
 import { EMAIL_REG_EXP } from '../../constants';
 
 import './profile.scss';
+import { navigateTo } from '../../utils/navigateTo';
 
 const mockUser = {
   email: 'test@test.test',
@@ -19,7 +20,7 @@ const mockUser = {
 
 export type User = typeof mockUser;
 
-export class ProfilePage extends Block<ProfileInfoProps> {
+export class Profile extends Block<ProfileInfoProps> {
   constructor() {
     const { events, values, errors } = new FormHelper({
       initialState: {
@@ -119,6 +120,18 @@ export class ProfilePage extends Block<ProfileInfoProps> {
             });
           },
           selectors: '.profile-page__change-password .dialog-header__close-btn',
+        },
+
+        {
+          type: 'click',
+          callback: navigateTo('/chats'),
+          selectors: '.chats-link',
+        },
+
+        {
+          type: 'click',
+          callback: navigateTo('/sign-in'),
+          selectors: '.sign-out-link',
         },
         ...events,
       ],

@@ -1,9 +1,9 @@
-import Block from '../../../utils/Block';
+import Block from '../../../modules/block/Block';
 import compileTemplate from '../../../utils/compileTemplate';
 import { contextMenuTemplate } from './context-menu.template';
 
 import './context-menu.scss';
-import { ContextMenuItem, ContextMenuItemProps } from '../context-menu-item';
+import { ContextMenuItemProps } from '../context-menu-item';
 
 export type ContextMenuProps = {
   className?: string;
@@ -11,16 +11,10 @@ export type ContextMenuProps = {
 };
 
 export class ContextMenu extends Block<ContextMenuProps> {
-  get items() {
-    const { items = [] } = this.props;
-    return items.map((item) => (
-      new ContextMenuItem(item).render()
-    ));
-  }
 
   render() {
-    const { items } = this;
-    const { className } = this.props;
+    const { className, items } = this.props;
+    console.log('items', items)
     return compileTemplate(contextMenuTemplate, {
       items,
       className,

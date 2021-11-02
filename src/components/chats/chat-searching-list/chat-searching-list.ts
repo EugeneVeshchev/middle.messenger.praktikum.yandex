@@ -1,28 +1,20 @@
-import { ChatPreview, ChatPreviewProps } from '../chat-preview/chat-preview';
-import Block from '../../../utils/Block';
+import { ChatPreviewProps } from '../chat-preview/chat-preview';
+import Block from '../../../modules/block/Block';
 import compileTemplate from '../../../utils/compileTemplate';
 import { chatSearchingListTemplate } from './chat-searching-list.template';
 
 export type ChatSearchingListProps = {
   className?: string;
-  chats: ChatPreviewProps[]
+  chats: ChatPreviewProps[];
+  onChangeChat: (id: string) => void;
 };
 
 export class ChatSearchingList extends Block<ChatSearchingListProps> {
-  get chats() {
-    const { chats } = this.props;
-    return chats.map((chat) => (
-      new ChatPreview({
-        ...chat,
-        variant: 'small',
-      }).render()
-    ));
-  }
-
   render() {
-    const { chats } = this;
+    const { chats, onChangeChat } = this.props;
     return compileTemplate(chatSearchingListTemplate, {
       chats,
+      onChangeChat,
     });
   }
 }

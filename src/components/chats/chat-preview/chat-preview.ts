@@ -1,13 +1,11 @@
-import Block from '../../../utils/Block';
+import Block from '../../../modules/block/Block';
 import compileTemplate from '../../../utils/compileTemplate';
 import { chatPreviewTemplate } from './chat-preview.template';
 
 import './chat-preview.scss';
-import { Avatar } from '../../common/avatar';
-import { Badge } from '../../common/badge';
-import { TimeBadge } from '../../common/time-badge';
 
 export type ChatPreviewProps = {
+  id?: string;
   avatar?: string;
   name?: string;
   description?: string;
@@ -15,46 +13,35 @@ export type ChatPreviewProps = {
   formattedTime?: string;
   isActive?: boolean;
   variant?: 'default' | 'small'
+  onClick?: (id: string) => void;
 };
 
 export class ChatPreview extends Block<ChatPreviewProps> {
-  get avatar() {
-    const { avatar, variant } = this.props;
-    const isSmall = variant === 'small';
-    return new Avatar({
-      src: avatar,
-      size: isSmall ? 'small' : undefined,
-    }).render();
-  }
 
-  get timeBadge() {
-    const { formattedTime } = this.props;
-    return new TimeBadge({
-      value: formattedTime,
-    }).render();
-  }
-
-  get badge() {
-    const { unreadMessages } = this.props;
-    if (!unreadMessages) {
-      return null;
+  handleClickChat(e: Event) {
+    e.stopPropagation();
+    const {onClick, id} = this.props;
+    if (!id) {
+      return
     }
-    return new Badge({
-      variant: 'primary',
-      value: unreadMessages,
-    }).render();
+    onClick?.(id)
   }
 
   render() {
-    const { avatar, timeBadge, badge } = this;
-    const { name, description, isActive } = this.props;
+    const {
+      avatar, variant, name, description, isActive, unreadMessages, formattedTime,
+    } = this.props;
+
     return compileTemplate(chatPreviewTemplate, {
+      avatar,
+      variant,
       name,
       description,
+      unreadMessages,
+      formattedTime,
       isActive,
-      avatar,
-      timeBadge,
-      badge,
+
+      onClick: this.handleClickChat.bind(this)
     });
   }
 }

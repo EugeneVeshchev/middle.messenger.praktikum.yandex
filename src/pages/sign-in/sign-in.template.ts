@@ -9,10 +9,12 @@ export const signInTemplate = `
 
             {{{fields}}}
             
+            <div>Num: {{num}}</div>
             <div class="content-column-4 form__column">
                 {{#each actions}}
                     {{{this}}}
                 {{/each}}
+            </div>
         </form>
     </main>
 `;

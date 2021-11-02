@@ -1,4 +1,4 @@
-import EventBus from './EventBus';
+import EventBus from '../../utils/EventBus';
 
 interface Meta<TProps> {
   tagName: string;
@@ -107,10 +107,20 @@ export default class Block<
     });
   }
 
+  _setEvent(id: string, eventType: string, callback: void) {
+    console.log({
+      id,
+      eventType,
+      callback,
+    })
+  }
   _addEvents() {
     const { events = [] } = this.props;
     events.forEach(({ type, callback, selectors }) => {
       const elements = this._element.querySelectorAll(selectors);
+      if (selectors === 'profile-link') {
+        console.log('elements', elements);
+      }
       elements.forEach((element) => element.addEventListener(type, callback));
     });
   }
@@ -118,11 +128,11 @@ export default class Block<
   _render() {
     const block = this.render();
 
-    this._removeEvents();
+    // this._removeEvents();
 
     this._element.innerHTML = block;
 
-    this._addEvents();
+    // this._addEvents();
   }
 
   render() {
@@ -130,7 +140,7 @@ export default class Block<
   }
 
   getContent() {
-    return this.element;
+    return this.element.innerHTML;
   }
 
   _makePropsProxy(props: TProps) {
@@ -147,6 +157,14 @@ export default class Block<
         throw new Error('нет доступа');
       },
     });
+  }
+
+  hide() {
+    this._element.style.display = 'none';
+  }
+
+  show() {
+    this._element.style.display = 'block';
   }
 
   _createDocumentElement(tagName: string) {

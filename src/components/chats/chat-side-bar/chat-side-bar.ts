@@ -1,72 +1,53 @@
-import { ChatPreviewList, ChatPreviewListProps } from '../chat-preview-list';
-import Block from '../../../utils/Block';
-import { ChatSearchingList } from '../chat-searching-list';
+import { ChatPreviewListProps } from '../chat-preview-list';
+import Block from '../../../modules/block/Block';
 import compileTemplate from '../../../utils/compileTemplate';
 import { chatSideBarTemplate } from './chat-side-bar.template';
 
 import './chat-side-bar.scss';
-import { Avatar } from '../../common/avatar';
-import { Icon } from '../../common/icon';
-import Link from '../../common/link';
-import { TextField } from '../../common/text-field';
 
 export type ChatSideBarProps = {
   chats: ChatPreviewListProps['chats']
+  showingChats: ChatPreviewListProps['chats']
+  isSearching?: boolean
+  onChangeChat: (id: string) => void;
 };
 
 export class ChatSideBar extends Block<ChatSideBarProps> {
-  get userAvatar() {
-    return new Avatar({
-      size: 'small',
-    }).render();
+
+  constructor(props: Omit<ChatSideBarProps, 'showingChats' | 'isSearching'>) {
+    super({
+      ...props,
+      showingChats: props.chats
+    });
   }
 
-  get searchField() {
-    return new TextField({
-      id: 'search',
-      name: 'search',
-      placeholder: 'Поиск',
-      required: true,
-      variant: 'primary',
-    }).render();
-  }
-
-  get profileLink() {
-    return new Link({
-      href: '/profile',
-      variant: 'primary',
-      title: 'Профиль',
-      rightIcon: new Icon({
-        className: 'link__icon link__icon_right',
-        name: 'keyboard_arrow_right',
-      }).render(),
-    }).render();
-  }
-
-  get chatPreviewList() {
+  handleSearch(e: Event) {
+    e.preventDefault();
+    const search = new FormData(e.target as HTMLFormElement).get('search') || '';
     const { chats } = this.props;
-    return new ChatPreviewList({
+    console.log({
+      search,
       chats,
-    }).render();
-  }
+      showing: chats.filter(chat => chat?.name?.toLowerCase().includes(String(search).toLowerCase()))
+    });
 
-  get chatSearchingList() {
-    const { chats } = this.props;
-    return new ChatSearchingList({
-      chats,
-    }).render();
+    this.setProps({
+      isSearching: true,
+      showingChats: chats.filter(chat => chat?.name?.toLowerCase().includes(String(search).toLowerCase()))
+    })
   }
 
   render() {
-    const {
-      userAvatar, searchField, profileLink, chatPreviewList, chatSearchingList,
-    } = this;
+    const { isSearching, showingChats, onChangeChat } = this.props;
+
+    console.log('isSearching', isSearching)
+    console.log('showingChats', showingChats)
+
     return compileTemplate(chatSideBarTemplate, {
-      userAvatar,
-      searchField,
-      profileLink,
-      chatPreviewList,
-      chatSearchingList,
+      chats: showingChats,
+      onChangeChat,
+      isSearching,
+      onSearch: this.handleSearch.bind(this),
     });
   }
 }

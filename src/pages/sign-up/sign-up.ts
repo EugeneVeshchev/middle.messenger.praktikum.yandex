@@ -1,15 +1,16 @@
-import Block from '../../utils/Block';
+import Block from '../../modules/block/Block';
 import { FormHelper, FormHelperData } from '../../utils/FormHelper';
 import Logotype from '../../components/common/logotype';
-import Heading from '../../components/common/heading';
+import {Heading} from '../../components/common/heading';
 import { FormFields } from '../../components/common/form-fields';
 import Button from '../../components/common/button';
-import Link from '../../components/common/link';
+import {Link} from '../../components/common/link';
 import compileTemplate from '../../utils/compileTemplate';
 import { signUpTemplate } from './sign-up.template';
 
 import './sign-up.scss';
 import { EMAIL_REG_EXP } from '../../constants';
+import { navigateTo } from '../../utils/navigateTo';
 
 type SignUpModel = {
   email?: string;
@@ -74,7 +75,17 @@ export class SignUp extends Block<FormHelperData<SignUpModel>> {
       },
       onSubmit: console.log,
     });
-    super({ values, errors, events });
+    super({
+      values,
+      errors,
+      events: [
+        {
+          selectors: '.sign-in-link',
+          type: 'click',
+          callback: navigateTo('/sign-in'),
+        },
+        ...events],
+    });
   }
 
   get logotype() {
@@ -151,6 +162,7 @@ export class SignUp extends Block<FormHelperData<SignUpModel>> {
       }).render(),
       new Link({
         href: '/sign-in',
+        className: 'sign-in-link',
         title: 'Войти',
         type: 'button',
       }).render(),
